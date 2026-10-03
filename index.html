@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARS PAULINE | Official Clan - The Strongest Battlegrounds</title>
+    <meta name="description" content="Trang thông tin cộng đồng Clan ARS PAULINE trong tựa game The Strongest Battlegrounds (Roblox). 'Thời Khắc Đăng Quang, Là Lúc Khởi Đầu Vạn Sự'.">
+    <link rel="icon" type="image/webp" href="assets/images/avatar.webp">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        xs: '440px',
+                    },
+                    fontFamily: {
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                        heading: ['"Be Vietnam Pro"', '"Montserrat"', 'sans-serif'],
+                    },
+                    colors: {
+                        canvasBlack: '#000000',
+                        sapphire: '#0474C4',
+                        sapphireDeep: '#06457F',
+                        sapphireSlate: '#5379AE',
+                        sapphireWhisper: '#A8C4EC',
+                        slateTeal: '#2C444C',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Styling (Pure AMOLED Black + Sapphire Accents + Vietnamese Fonts + Reveal Animations) -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-black text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-[#0474C4] selection:text-white">
+
+    <!-- React Bits PatternWaves Interactive WebGL Background (Pure AMOLED Black) -->
+    <div id="pattern-waves-container"></div>
+
+    <!-- ==========================================================================
+       REACT BITS FLOATING DOCK (REPLACES TOP NAVBAR)
+       Positioned at top as a sleek, modern glass island navigation
+       ========================================================================== -->
+    <nav id="dock-container" aria-label="Floating quick dock"></nav>
+
+    <!-- ==========================================================================
+       HERO SECTION (FULL VIEWPORT - KHÔNG LẠM DỤNG CARD - THOÁNG ĐÃNG & SANG TRỌNG)
+       Bố cục ngang phóng to toàn diện với Reveal Animations mượt mà
+       ========================================================================== -->
+    <section id="hero" class="relative min-h-screen flex flex-col justify-between pt-20 pb-6 md:pt-24 md:pb-8 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto z-10">
+        
+        <!-- Main Horizontal Layout (Canh Giữa Viewport) -->
+        <div class="my-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center w-full">
+            
+            <!-- CỘT TRÁI (THÔNG TIN GỌN GÀNG, COHESIVE, REVEAL CASCADING) -->
+            <div class="lg:col-span-7 flex flex-col space-y-4 sm:space-y-5 lg:space-y-5">
+                <!-- Avatar & Tiêu Đề Chính Căn Ngang Đồng Đều Cân Xứng -->
+                <div class="flex items-center gap-4 sm:gap-6 md:gap-7 reveal delay-100">
+                    <div class="border-glow-card w-24 h-24 xs:w-28 xs:h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 xl:w-48 xl:h-48 rounded-2xl sm:rounded-3xl shadow-2xl shadow-[#0474C4]/30 flex-shrink-0 animate-float group cursor-pointer" style="--border-radius: 24px; --glow-padding: 30px; --edge-sensitivity: 15;">
+                        <span class="edge-light"></span>
+                        <div class="border-glow-inner w-full h-full rounded-[14px] sm:rounded-[22px] overflow-hidden">
+                            <img src="assets/images/avatar.webp" alt="ARS Pauline Avatar" class="w-full h-full object-cover rounded-[14px] sm:rounded-[22px] group-hover:scale-105 transition-transform duration-500 select-none">
+                        </div>
+                    </div>
+                    <div class="space-y-1 sm:space-y-1.5">
+                        <h1 class="text-4xl xs:text-5xl sm:text-6xl md:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-black font-heading tracking-tight uppercase glow-text leading-[0.92]">
+                            ARS<br>PAULINE
+                        </h1>
+                        <!-- Competitive Ranking Badges -->
+                        <div class="flex flex-wrap items-center gap-2 pt-0.5">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0474C4]/20 border border-[#0474C4]/60 text-white font-mono text-[10px] sm:text-xs font-bold tracking-wide shadow-sm shadow-[#0474C4]/30">
+                                <i data-lucide="trophy" class="w-3 h-3 text-[#0474C4]"></i>
+                                <span>Former #1 VN</span>
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#06457F]/35 border border-[#5379AE]/40 text-[#A8C4EC] font-mono text-[10px] sm:text-xs font-bold tracking-wide">
+                                <i data-lucide="globe" class="w-3 h-3 text-[#A8C4EC]"></i>
+                                <span>Former #3 Asia</span>
+                            </span>
+                        </div>
+                        <p class="text-[10px] sm:text-[11px] md:text-xs font-mono tracking-wide text-[#A8C4EC]/85 uppercase">
+                            Clan Cộng Đồng • Est. Tháng 3/2024 • Tiền Thân Survivor of Riots
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slogan Điểm Nhấn Thanh Thoát (Không Đóng Khung Card) -->
+                <div class="border-l-2 border-[#0474C4] pl-4 sm:pl-5 py-0.5 text-left reveal delay-200">
+                    <p class="text-lg sm:text-xl md:text-2xl text-white font-bold leading-snug tracking-tight">
+                        "Thời Khắc Đăng Quang, Là Lúc Khởi Đầu Vạn Sự"
+                    </p>
+                    <p class="text-[11px] sm:text-xs text-[#A8C4EC] font-mono tracking-wide mt-1">
+                        The Time of Coronation Has Come — He Is the One Who Begins All Things
+                    </p>
+                </div>
+
+                <!-- Nút Hành Động Kêu Gọi Gọn Gàng -->
+                <div class="flex flex-wrap items-center gap-3 sm:gap-4 pt-0.5 reveal delay-300">
+                    <a href="https://discord.gg/arsontop" target="_blank" class="btn-shimmer px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-[#0474C4] hover:bg-[#06457F] text-white font-bold font-heading text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-[#0474C4]/30 flex items-center gap-2.5 transition-all hover:scale-105 cursor-pointer">
+                        <i data-lucide="message-square" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                        <span>Vào Discord Giao Lưu</span>
+                    </a>
+                    <a href="#origin" class="border-glow-card rounded-xl text-[#A8C4EC] hover:text-white font-semibold font-heading text-xs sm:text-sm uppercase tracking-wider transition-all inline-block group" style="--border-radius: 12px; --glow-padding: 22px; --edge-sensitivity: 15;">
+                        <span class="edge-light"></span>
+                        <div class="border-glow-inner px-6 sm:px-7 py-3 sm:py-3.5 bg-white/5 group-hover:bg-white/10" style="display: flex; flex-direction: row; align-items: center; gap: 0.5rem; border-radius: 12px;">
+                            <i data-lucide="book-open" class="w-4 h-4 sm:w-5 sm:h-5 text-[#0474C4]"></i>
+                            <span>Tìm Hiểu Về Clan</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Dải 5 Thông Số Clan Gọn Gàng, Không Tràn/Lỗi Link -->
+                <div class="border-glow-card rounded-2xl bg-black/60 shadow-xl shadow-[#0474C4]/5 reveal delay-400" style="--border-radius: 18px;">
+                    <span class="edge-light"></span>
+                    <div class="border-glow-inner py-3.5 px-4 sm:py-4 sm:px-5">
+                        <div class="stats-grid text-left items-center">
+                            <div class="min-w-0">
+                                <span class="text-[9.5px] sm:text-[10px] md:text-[10.5px] lg:text-[11px] uppercase font-semibold text-[#5379AE] block mb-0.5 truncate">Tựa Game</span>
+                                <p class="font-heading font-bold text-xs sm:text-[11px] md:text-xs lg:text-[13px] text-white truncate" id="stat-game" title="TSB (Roblox)">TSB (Roblox)</p>
+                            </div>
+                            <div class="sm:border-l border-[#5379AE]/20 sm:pl-2.5 md:pl-3 min-w-0">
+                                <span class="text-[9.5px] sm:text-[10px] md:text-[10.5px] lg:text-[11px] uppercase font-semibold text-[#5379AE] block mb-0.5 truncate">Thứ Hạng VN</span>
+                                <p class="font-heading font-extrabold text-xs sm:text-[11px] md:text-xs lg:text-[13px] text-[#0474C4] whitespace-nowrap" id="stat-rank-vn">Former #1 VN</p>
+                            </div>
+                            <div class="border-t sm:border-t-0 pt-2.5 sm:pt-0 border-[#5379AE]/20 sm:border-l sm:pl-2.5 md:pl-3 min-w-0">
+                                <span class="text-[9.5px] sm:text-[10px] md:text-[10.5px] lg:text-[11px] uppercase font-semibold text-[#5379AE] block mb-0.5 truncate">Thứ Hạng Asia</span>
+                                <p class="font-heading font-bold text-xs sm:text-[11px] md:text-xs lg:text-[13px] text-[#A8C4EC] whitespace-nowrap" id="stat-rank-asia">Former #3 Asia</p>
+                            </div>
+                            <div class="border-t sm:border-t-0 pt-2.5 sm:pt-0 border-[#5379AE]/20 sm:border-l sm:pl-2.5 md:pl-3 min-w-0">
+                                <span class="text-[9.5px] sm:text-[10px] md:text-[10.5px] lg:text-[11px] uppercase font-semibold text-[#5379AE] block mb-0.5 truncate">Server Comp</span>
+                                <p class="font-heading font-bold text-xs sm:text-[11px] md:text-xs lg:text-[13px] text-white whitespace-nowrap" id="stat-comp-servers">TSBCC & TSBVN</p>
+                            </div>
+                            <div class="border-t sm:border-t-0 pt-2.5 sm:pt-0 border-[#5379AE]/20 sm:border-l sm:pl-2.5 md:pl-3 col-span-2 sm:col-span-1 min-w-0">
+                                <span class="text-[9.5px] sm:text-[10px] md:text-[10.5px] lg:text-[11px] uppercase font-semibold text-[#5379AE] block mb-0.5 truncate">Discord Clan</span>
+                                <a href="https://discord.gg/arsontop" target="_blank" class="font-mono font-bold text-xs sm:text-[10.5px] md:text-[11px] lg:text-xs xl:text-[13px] text-[#0474C4] hover:text-[#A8C4EC] transition-colors whitespace-nowrap block truncate" id="stat-discord" title="discord.gg/arsontop">discord.gg/arsontop</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CỘT PHẢI (BANNER ARTWORK CARD TILT 3D VỚI BORDER GLOW - REVEAL SCALE ANIMATION) -->
+            <div class="lg:col-span-5 w-full flex flex-col justify-center reveal-scale delay-200">
+                <div class="tilt-card-wrapper w-full">
+                    <div id="banner-artwork-card" class="tilt-card border-glow-card relative rounded-3xl shadow-2xl shadow-[#0474C4]/20 aspect-[16/11] sm:aspect-[16/10] bg-black cursor-pointer group" style="--border-radius: 24px; --glow-padding: 42px; --edge-sensitivity: 15;">
+                        <span class="edge-light"></span>
+                        <div class="border-glow-inner relative w-full h-full rounded-3xl overflow-hidden">
+                            <!-- Banner Image with subtle depth -->
+                            <img src="assets/images/banner.jpg" alt="ARS Pauline Official Banner" class="w-full h-full object-cover select-none pointer-events-none group-hover:scale-105 transition-transform duration-700">
+                            
+                            <!-- Vignette Shadow -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent pointer-events-none"></div>
+
+                            <!-- 3D Specular Glare Reflection -->
+                            <div class="tilt-card-glare absolute inset-0 pointer-events-none opacity-0"></div>
+                            
+                            <!-- Floating 3D Text & Badge -->
+                            <div class="tilt-float-3d absolute bottom-4 left-5 right-5 flex items-center justify-between text-left pointer-events-none">
+                                <div>
+                                    <span class="text-[10px] font-mono text-[#A8C4EC] uppercase tracking-wider block">Official Banner</span>
+                                    <span class="text-sm sm:text-base font-heading font-bold text-white tracking-wider">ARS PAULINE ARTWORK</span>
+                                </div>
+                                <span class="px-3 py-1 rounded-lg bg-[#0474C4]/90 text-white text-[11px] font-mono font-bold uppercase tracking-wider shadow-lg shadow-[#0474C4]/40 border border-[#A8C4EC]/30">#1 VN • #3 ASIA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Scroll Down Indicator (Gợi Ý Cuộn Trang) -->
+        <div class="pt-4 flex justify-center reveal delay-500">
+            <a href="#origin" class="inline-flex flex-col items-center gap-1 text-[11px] font-mono text-[#5379AE] hover:text-[#A8C4EC] transition-colors group">
+                <span class="tracking-widest uppercase">Cuộn xuống tìm hiểu</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-[#0474C4] group-hover:translate-y-1 transition-transform animate-bounce"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       ORIGIN & LORE SECTION (KHỞI ĐẦU CỦA ARS PAULINE - EDITORIAL THOÁNG ĐÃNG)
+       Bỏ hoàn toàn khung hộp card, trình bày kiểu bài báo hiện đại trên nền đen
+       ========================================================================== -->
+    <section id="origin" class="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto z-10 relative">
+        <div class="reveal delay-100">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#06457F]/30 border border-[#0474C4]/35 text-[#A8C4EC] text-xs font-mono mb-4">
+                <i data-lucide="history" class="w-3.5 h-3.5 text-[#0474C4]"></i>
+                <span>THÔNG TIN & LỊCH SỬ • EST. THÁNG 3/2024</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-black font-heading text-white uppercase tracking-tight mb-3">
+                KHỞI ĐẦU CỦA ARS PAULINE
+            </h2>
+            <p class="text-[#A8C4EC] text-sm sm:text-base font-medium mb-6">
+                Khởi lập khoảng tháng 3/2024 từ Survivor of Riots (Sorcerer Battlegrounds) đến The Strongest Battlegrounds (TSBCC & TSBVN)
+            </p>
+            <div class="w-16 h-1 bg-gradient-to-r from-[#0474C4] to-[#A8C4EC] rounded-full mb-10"></div>
+        </div>
+
+        <!-- Dynamic Story Container (Rendered from data.js with staggered reveals) -->
+        <div id="origin-story-container"></div>
+    </section>
+
+    <!-- ==========================================================================
+       ALLIES & PARTNERS SECTION (ĐỒNG MINH & ĐỐI TÁC - SYNC DISCORD AVATAR & NAME)
+       Thiết kế Editorial tinh giản trên nền đen AMOLED, không lạm dụng card
+       ========================================================================== -->
+    <section id="partners" class="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto z-10 relative">
+        <div class="reveal delay-100 mb-10 sm:mb-12">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#06457F]/30 border border-[#0474C4]/35 text-[#A8C4EC] text-xs font-mono mb-4">
+                <i data-lucide="handshake" class="w-3.5 h-3.5 text-[#0474C4]"></i>
+                <span>MẠNG LƯỚI LIÊN MINH</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-black font-heading text-white uppercase tracking-tight mb-3">
+                ĐỒNG MINH & ĐỐI TÁC
+            </h2>
+            <p class="text-[#A8C4EC] text-sm sm:text-base font-medium mb-6">
+                Các partner và ally của clan
+            </p>
+            <div class="w-16 h-1 bg-gradient-to-r from-[#0474C4] to-[#A8C4EC] rounded-full"></div>
+        </div>
+
+        <!-- Dynamic Partners Grid (Rendered from data.js & synced live with Discord API) -->
+        <div id="partners-list" class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+            <!-- Render từ data.js -->
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       FAQ SECTION (INTERACTIVE DIVIDER ACCORDIONS - KHÔNG CARD HỘP)
+       Các dòng câu hỏi phân tách bằng đường kẻ thanh mảnh, không đóng khung
+       ========================================================================== -->
+    <section id="faqs" class="py-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto z-10 relative">
+        <div class="text-center mb-12 reveal delay-100">
+            <span class="text-xs font-mono uppercase tracking-widest text-[#5379AE] font-semibold block mb-2">CÂU HỎI THƯỜNG GẶP</span>
+            <h2 class="text-2xl sm:text-4xl font-bold font-heading text-white uppercase tracking-tight">
+                GIẢI ĐÁP THẮC MẮC (FAQ)
+            </h2>
+            <div class="w-12 h-1 bg-[#0474C4] mx-auto rounded-full mt-3"></div>
+        </div>
+
+        <!-- Clean seamless accordion trong Border Glow Card -->
+        <div class="border-glow-card rounded-3xl bg-black/60 shadow-xl shadow-[#0474C4]/5 reveal delay-200" style="--border-radius: 24px;">
+            <span class="edge-light"></span>
+            <div class="border-glow-inner p-5 sm:p-8">
+                <div id="faq-accordion-container" class="divide-y divide-[#5379AE]/20">
+                    <!-- Render từ data.js -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       FOOTER SECTION (DEEP DARK MINIMALIST GLASS FOOTER)
+       ========================================================================== -->
+    <footer class="border-t border-[#5379AE]/20 bg-black py-14 px-4 sm:px-6 lg:px-8 z-10 relative">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <!-- Info & Logo -->
+            <div class="flex flex-col items-center md:items-start gap-2.5 reveal delay-100">
+                <div class="flex items-center gap-3">
+                    <img src="assets/images/avatar.webp" alt="ARS Pauline" class="w-10 h-10 rounded-xl object-cover border border-[#0474C4]/50 shadow-md">
+                    <span class="font-heading font-extrabold text-lg text-white">ARS PAULINE</span>
+                </div>
+                <p class="text-slate-400 text-xs max-w-sm">
+                    "Thời Khắc Đăng Quang, Là Lúc Khởi Đầu Vạn Sự". Clan The Strongest Battlegrounds thành lập khoảng tháng 3/2024 tại Việt Nam.
+                </p>
+            </div>
+
+            <!-- Discord Community Link -->
+            <div class="flex items-center reveal delay-200">
+                <a href="https://discord.gg/arsontop" target="_blank" class="btn-shimmer flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-[#0474C4] hover:bg-[#06457F] text-white font-bold text-xs uppercase tracking-wider font-heading shadow-md shadow-[#0474C4]/20 transition-all">
+                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                    <span>Gia Nhập discord.gg/arsontop</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto border-t border-[#5379AE]/15 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-3 reveal delay-300">
+            <p>© 2026 ARS PAULINE CLAN. All Rights Reserved.</p>
+            <p>Roblox & The Strongest Battlegrounds are registered trademarks of their respective owners.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="assets/js/ogl.js"></script>
+    <script src="assets/js/pattern-waves.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/dock.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

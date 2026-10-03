@@ -1,0 +1,23 @@
+.tilted-card-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.tilted-card-inner {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+  border-radius: inherit;
+}
+
+.tilted-card-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+  z-index: 10;
+}

@@ -1,0 +1,810 @@
+/* ==========================================================================
+   ARS PAULINE CLAN - THE STRONGEST BATTLEGROUNDS
+   Aesthetic: Premium Glassmorphism on Pure AMOLED Black Canvas
+   Palette (Color Scheme 23: Sapphire Nightfall Whisper):
+   - Background: Pure AMOLED Black (#000000)
+   - #0474C4 : Vibrant Sapphire (Primary Accent / Glowing Borders)
+   - #5379AE : Slate Sapphire (Muted Secondary / Divider Borders)
+   - #2C444C : Slate Teal (Translucent Glass Tint)
+   - #A8C4EC : Ice Whisper Blue (Glows / Highlights / Text)
+   - #06457F : Deep Navy Sapphire (Ambient Atmosphere / Gradient Depth)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+:root {
+    --bg-black: #000000;
+    --bg-card-glass: rgba(44, 68, 76, 0.14);
+    --border-glass: rgba(168, 196, 236, 0.15);
+    --border-glass-glow: rgba(4, 116, 196, 0.5);
+
+    --sapphire-primary: #0474C4;
+    --sapphire-deep: #06457F;
+    --sapphire-slate: #5379AE;
+    --sapphire-whisper: #A8C4EC;
+    --slate-teal: #2C444C;
+
+    --accent-glow: rgba(4, 116, 196, 0.35);
+    --font-heading: 'Be Vietnam Pro', 'Montserrat', sans-serif;
+    --font-body: 'Be Vietnam Pro', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: #000000;
+    color: #f1f5f9;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: #000000;
+}
+
+/* Custom Sapphire Scrollbar on Black */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(83, 121, 174, 0.4);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--sapphire-primary);
+}
+
+/* React Bits PatternWaves Interactive WebGL Background Container */
+.pattern-waves-container,
+#pattern-waves-container {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    overflow: hidden;
+}
+
+/* Typography Utility & Contrast Shield (Prevents text from drowning under canvas) */
+.font-heading:not(.glow-text) {
+    font-family: var(--font-heading);
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+.font-heading {
+    font-family: var(--font-heading);
+    letter-spacing: 0.04em;
+}
+
+/* Explicitly strip text-shadow for clipped text elements to avoid browser black fill bug */
+.font-heading.glow-text,
+.glow-text,
+.glow-text *,
+h1.glow-text,
+h1.glow-text * {
+    text-shadow: none !important;
+}
+
+p, span, li, button, a {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.65);
+}
+
+.glow-text span,
+h1.glow-text span {
+    text-shadow: none !important;
+}
+
+/* Luminous Sapphire & White Radiant Heading (Crisp & High Contrast on AMOLED Black) */
+.glow-text {
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 55%, #E1EFFF 80%, #8EC6FC 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #FFFFFF;
+    text-shadow: none !important;
+    filter: drop-shadow(0 0 26px rgba(4, 116, 196, 0.65)) drop-shadow(0 0 55px rgba(4, 116, 196, 0.3));
+}
+
+/* ==========================================================================
+   GLASSMORPHISM CORE COMPONENTS
+   ========================================================================== */
+.glass-panel {
+    background: rgba(44, 68, 76, 0.12);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(168, 196, 236, 0.14);
+    box-shadow: 
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
+        inset 0 -1px 1px 0 rgba(0, 0, 0, 0.2),
+        0 16px 40px -12px rgba(0, 0, 0, 0.7);
+}
+
+.glass-panel-interactive {
+    background: rgba(44, 68, 76, 0.14);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(168, 196, 236, 0.14);
+    box-shadow: 
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
+        0 16px 36px -10px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel-interactive:hover {
+    transform: translateY(-4px);
+    border-color: rgba(4, 116, 196, 0.5);
+    background: rgba(44, 68, 76, 0.22);
+    box-shadow: 
+        inset 0 1px 2px 0 rgba(168, 196, 236, 0.25),
+        0 20px 48px -10px rgba(4, 116, 196, 0.3);
+}
+
+.glass-pill {
+    background: rgba(6, 69, 127, 0.3);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(4, 116, 196, 0.35);
+    box-shadow: inset 0 1px 1px 0 rgba(168, 196, 236, 0.15);
+}
+
+/* Clean Button Shimmer */
+.btn-shimmer {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.25s ease;
+}
+
+.btn-shimmer::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        60deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        transparent
+    );
+    transform: rotate(45deg) translateY(-100%);
+    transition: transform 0.65s ease;
+}
+
+.btn-shimmer:hover::before {
+    transform: rotate(45deg) translateY(100%);
+}
+
+/* Floating Animation */
+@keyframes floatSubtle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+    animation: floatSubtle 4s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   REACT BITS - FLOATING TOP GLASS DOCK
+   Replaces the traditional top navbar with a sleek floating glass island
+   ========================================================================== */
+#dock-container {
+    position: fixed;
+    top: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    pointer-events: auto;
+    max-width: 95vw;
+}
+
+.dock-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+    gap: 0.625rem;
+    height: 60px;
+    padding: 0 0.75rem;
+    border-radius: 9999px;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(168, 196, 236, 0.2);
+    box-shadow: 
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
+        0 14px 40px -6px rgba(0, 0, 0, 0.8),
+        0 0 25px -5px rgba(4, 116, 196, 0.25);
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.dock-panel:hover {
+    border-color: rgba(4, 116, 196, 0.55);
+    box-shadow: 
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
+        0 18px 45px -5px rgba(0, 0, 0, 0.9),
+        0 0 35px -5px rgba(4, 116, 196, 0.4);
+}
+
+.dock-item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 9999px;
+    background-color: rgba(44, 68, 76, 0.35);
+    border: 1px solid rgba(83, 121, 174, 0.3);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    flex-shrink: 0;
+}
+
+.dock-item:hover,
+.dock-item:focus-visible {
+    background-color: rgba(4, 116, 196, 0.4);
+    border-color: #0474C4;
+    box-shadow: 0 0 16px rgba(4, 116, 196, 0.55);
+}
+
+.dock-item.dock-item-avatar {
+    background: transparent;
+    border: 1px solid rgba(4, 116, 196, 0.55);
+    overflow: hidden;
+    padding: 1px;
+}
+
+.dock-item.dock-item-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 9999px;
+}
+
+.dock-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #A8C4EC;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.dock-item:hover .dock-icon {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* Tooltip positioned DOWNWARD below top dock */
+.dock-label {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    opacity: 0;
+    pointer-events: none;
+    white-space: pre;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(83, 121, 174, 0.4);
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(16px);
+    padding: 0.3rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #A8C4EC;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 60;
+}
+
+.dock-item:hover .dock-label {
+    opacity: 1;
+    transform: translateX(-50%) translateY(4px);
+}
+
+.dock-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    gap: 0.625rem;
+    padding: 0 0.75rem;
+    width: 100%;
+    height: 100%;
+}
+
+/* Mobile Responsiveness for Top Floating Glass Dock */
+@media (max-width: 640px) {
+    #dock-container {
+        top: 0.625rem;
+        max-width: calc(100vw - 1rem);
+    }
+    .dock-panel {
+        height: 44px;
+        padding: 0 0.85rem;
+    }
+    .dock-inner {
+        gap: 0.35rem !important;
+        padding: 0 !important;
+    }
+    .dock-item {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    .dock-item .dock-icon i,
+    .dock-item .dock-icon svg {
+        width: 15px !important;
+        height: 15px !important;
+    }
+    .dock-label {
+        display: none !important;
+    }
+}
+
+@media (max-width: 375px) {
+    #dock-container {
+        top: 0.5rem;
+        max-width: calc(100vw - 0.75rem);
+    }
+    .dock-panel {
+        height: 40px;
+        padding: 0 0.75rem;
+    }
+    .dock-inner {
+        gap: 0.25rem !important;
+        padding: 0 !important;
+    }
+    .dock-item {
+        width: 27px !important;
+        height: 27px !important;
+    }
+    .dock-item .dock-icon i,
+    .dock-item .dock-icon svg {
+        width: 13.5px !important;
+        height: 13.5px !important;
+    }
+}
+
+/* ==========================================================================
+   SMOOTH BIDIRECTIONAL REVEAL ANIMATIONS (GPU-ACCELERATED)
+   - Tốc độ reveal chậm rãi, mượt mà (1.35s duration với cubic-bezier cinematic)
+   - Scroll xuống: nội dung bên trên lướt lên và mờ biến mất (.exit-above)
+   - Scroll lên: nội dung bên dưới lướt xuống và mờ biến mất (.exit-below)
+   - Scroll đến đâu: nội dung trong viewport hiện mượt mà (.revealed)
+   ========================================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 1.35s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
+    transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+/* 1. Trạng Thái Hiện (In-View Active State) */
+.reveal.revealed,
+.reveal-scale.revealed {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+    transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 1.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 2. Trạng Thái Scroll Xuống -> Nội Dung Trên Biến Mất (.exit-above) */
+.reveal.exit-above {
+    opacity: 0 !important;
+    transform: translateY(-32px) !important;
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 0s !important;
+}
+
+.reveal-scale.exit-above {
+    opacity: 0 !important;
+    transform: translateY(-28px) scale(0.96) !important;
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 0s !important;
+}
+
+/* 3. Trạng Thái Scroll Lên -> Nội Dung Dưới Biến Mất (.exit-below) */
+.reveal.exit-below,
+.reveal:not(.revealed):not(.exit-above) {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 0s !important;
+}
+
+.reveal-scale.exit-below,
+.reveal-scale:not(.revealed):not(.exit-above) {
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 0s !important;
+}
+
+/* Stagger Delays chỉ áp dụng khi bắt đầu xuất hiện (.revealed) */
+.reveal.revealed.delay-100, .reveal-scale.revealed.delay-100 { transition-delay: 100ms; }
+.reveal.revealed.delay-150, .reveal-scale.revealed.delay-150 { transition-delay: 140ms; }
+.reveal.revealed.delay-200, .reveal-scale.revealed.delay-200 { transition-delay: 180ms; }
+.reveal.revealed.delay-250, .reveal-scale.revealed.delay-250 { transition-delay: 220ms; }
+.reveal.revealed.delay-300, .reveal-scale.revealed.delay-300 { transition-delay: 260ms; }
+.reveal.revealed.delay-400, .reveal-scale.revealed.delay-400 { transition-delay: 320ms; }
+.reveal.revealed.delay-500, .reveal-scale.revealed.delay-500 { transition-delay: 400ms; }
+.reveal.revealed.delay-600, .reveal-scale.revealed.delay-600 { transition-delay: 480ms; }
+
+/* Tắt độ trễ khi biến mất để chuyển cảnh tức thì và mượt mà */
+.reveal:not(.revealed),
+.reveal-scale:not(.revealed) {
+    transition-delay: 0s !important;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-scale,
+    .reveal.exit-above,
+    .reveal.exit-below,
+    .reveal-scale.exit-above,
+    .reveal-scale.exit-below {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* ==========================================================================
+   3D CARD TILT COMPONENT (BANNER ARTWORK)
+   ========================================================================== */
+.tilt-card-wrapper {
+    perspective: 1100px;
+    display: block;
+}
+
+.tilt-card {
+    transform-style: preserve-3d;
+    transform: perspective(1100px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+    transition: box-shadow 0.45s ease, border-color 0.3s ease;
+    will-change: transform;
+}
+
+.tilt-card.border-glow-card {
+    transform: perspective(1100px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+    transform-style: preserve-3d;
+}
+
+.tilt-card:hover {
+    border-color: rgba(4, 116, 196, 0.7);
+    box-shadow: 
+        0 24px 60px -10px rgba(4, 116, 196, 0.45),
+        0 0 35px -5px rgba(168, 196, 236, 0.25);
+}
+
+.tilt-card-glare {
+    mix-blend-mode: screen;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    z-index: 20;
+}
+
+.tilt-float-3d {
+    transform: translateZ(32px);
+    transform-style: preserve-3d;
+}
+
+/* ==========================================================================
+   INTERACTIVE FAQ ACCORDION REVEAL ANIMATIONS
+   - Smooth slide-and-reveal on question click
+   - Silky height expansion via CSS Grid (0fr -> 1fr)
+   - Dynamic fade-in, translate-glide, and subtle sapphire glow
+   ========================================================================== */
+.faq-item {
+    transition: border-color 0.35s ease, background-color 0.35s ease;
+}
+
+.faq-item.active {
+    border-color: rgba(4, 116, 196, 0.45) !important;
+}
+
+.faq-question {
+    transition: color 0.25s ease;
+}
+
+.faq-item.active .faq-question {
+    color: #A8C4EC;
+}
+
+.faq-icon {
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+    color: #0474C4;
+}
+
+.faq-answer-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item.active .faq-answer-wrapper {
+    grid-template-rows: 1fr;
+}
+
+.faq-answer {
+    overflow: hidden;
+    min-height: 0;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.faq-item.active .faq-answer {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.05s;
+}
+
+/* ==========================================================================
+   STATS GRID LAYOUT OPTIMIZER
+   - Tối ưu dải 5 thông số hero, cân đối tỉ lệ từng cột chống đè chữ / dính chữ
+   ========================================================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 0.625rem;
+}
+@media (min-width: 640px) {
+    .stats-grid {
+        grid-template-columns: 0.85fr 0.95fr 1.15fr 1.2fr 1.25fr !important;
+        gap: 0.5rem !important;
+        align-items: center;
+    }
+}
+@media (min-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: 0.85fr 0.95fr 1.15fr 1.2fr 1.25fr !important;
+        gap: 0.625rem !important;
+    }
+}
+@media (min-width: 1280px) {
+    .stats-grid {
+        grid-template-columns: 0.9fr 1fr 1.15fr 1.2fr 1.3fr !important;
+        gap: 0.875rem !important;
+    }
+}
+
+/* ==========================================================================
+   REACT BITS: BORDER GLOW COMPONENT STYLES
+   - Dynamic Edge Proximity & Cursor Angle Masking
+   - Sapphire Palette Default Preset (#0474C4, #5379AE, #A8C4EC)
+   ========================================================================== */
+.border-glow-card {
+    --edge-proximity: 0;
+    --cursor-angle: 45deg;
+    --edge-sensitivity: 30;
+    --color-sensitivity: calc(var(--edge-sensitivity) + 20);
+    --border-radius: 24px;
+    --glow-padding: 35px;
+    --cone-spread: 25;
+    --fill-opacity: 0.45;
+    --card-bg: #000000;
+
+    /* Sapphire Palette Glow Defaults */
+    --glow-color: hsl(205deg 96% 40% / 100%);
+    --glow-color-60: hsl(205deg 96% 40% / 60%);
+    --glow-color-50: hsl(205deg 96% 40% / 50%);
+    --glow-color-40: hsl(205deg 96% 40% / 40%);
+    --glow-color-30: hsl(205deg 96% 40% / 30%);
+    --glow-color-20: hsl(205deg 96% 40% / 20%);
+    --glow-color-10: hsl(205deg 96% 40% / 10%);
+
+    --gradient-one: radial-gradient(at 80% 55%, #0474C4 0px, transparent 50%);
+    --gradient-two: radial-gradient(at 69% 34%, #5379AE 0px, transparent 50%);
+    --gradient-three: radial-gradient(at 8% 6%, #A8C4EC 0px, transparent 50%);
+    --gradient-four: radial-gradient(at 41% 38%, #0474C4 0px, transparent 50%);
+    --gradient-five: radial-gradient(at 86% 85%, #5379AE 0px, transparent 50%);
+    --gradient-six: radial-gradient(at 82% 18%, #A8C4EC 0px, transparent 50%);
+    --gradient-seven: radial-gradient(at 51% 4%, #5379AE 0px, transparent 50%);
+    --gradient-base: linear-gradient(#0474C4 0 100%);
+
+    position: relative;
+    border-radius: var(--border-radius, 24px);
+    isolation: isolate;
+    transform: translate3d(0, 0, 0.01px);
+    display: grid;
+    border: 1px solid rgba(83, 121, 174, 0.25);
+    background: var(--card-bg, #000000);
+    overflow: visible;
+    box-shadow:
+        rgba(0, 0, 0, 0.2) 0px 1px 2px,
+        rgba(0, 0, 0, 0.2) 0px 2px 4px,
+        rgba(0, 0, 0, 0.2) 0px 4px 8px,
+        rgba(0, 0, 0, 0.2) 0px 8px 16px,
+        rgba(0, 0, 0, 0.2) 0px 16px 32px;
+}
+
+.border-glow-card--light {
+    border-color: rgb(24 24 27 / 12%);
+    box-shadow:
+        rgb(24 24 27 / 4%) 0 1px 2px,
+        rgb(24 24 27 / 5%) 0 8px 24px;
+}
+
+.border-glow-card--light::after,
+.border-glow-card--light > .edge-light {
+    mix-blend-mode: normal;
+}
+
+.border-glow-card::before,
+.border-glow-card::after,
+.border-glow-card > .edge-light {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    transition: opacity 0.25s ease-out;
+    z-index: -1;
+}
+
+.border-glow-card:not(:hover):not(.sweep-active)::before,
+.border-glow-card:not(:hover):not(.sweep-active)::after,
+.border-glow-card:not(:hover):not(.sweep-active) > .edge-light {
+    opacity: 0;
+    transition: opacity 0.75s ease-in-out;
+}
+
+/* colored mesh-gradient border */
+.border-glow-card::before {
+    border: 1px solid transparent;
+    background:
+        linear-gradient(var(--card-bg, #000000) 0 100%) padding-box,
+        linear-gradient(rgb(255 255 255 / 0%) 0% 100%) border-box,
+        var(--gradient-one) border-box,
+        var(--gradient-two) border-box,
+        var(--gradient-three) border-box,
+        var(--gradient-four) border-box,
+        var(--gradient-five) border-box,
+        var(--gradient-six) border-box,
+        var(--gradient-seven) border-box,
+        var(--gradient-base) border-box;
+
+    opacity: calc((var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+
+    -webkit-mask-image:
+        conic-gradient(
+            from var(--cursor-angle) at center,
+            black calc(var(--cone-spread) * 1%),
+            transparent calc((var(--cone-spread) + 15) * 1%),
+            transparent calc((100 - var(--cone-spread) - 15) * 1%),
+            black calc((100 - var(--cone-spread)) * 1%)
+        );
+    mask-image:
+        conic-gradient(
+            from var(--cursor-angle) at center,
+            black calc(var(--cone-spread) * 1%),
+            transparent calc((var(--cone-spread) + 15) * 1%),
+            transparent calc((100 - var(--cone-spread) - 15) * 1%),
+            black calc((100 - var(--cone-spread)) * 1%)
+        );
+}
+
+/* colored mesh-gradient background fill near edges */
+.border-glow-card::after {
+    border: 1px solid transparent;
+    background:
+        var(--gradient-one) padding-box,
+        var(--gradient-two) padding-box,
+        var(--gradient-three) padding-box,
+        var(--gradient-four) padding-box,
+        var(--gradient-five) padding-box,
+        var(--gradient-six) padding-box,
+        var(--gradient-seven) padding-box,
+        var(--gradient-base) padding-box;
+
+    -webkit-mask-image:
+        linear-gradient(to bottom, black, black),
+        radial-gradient(ellipse at 50% 50%, black 40%, transparent 65%),
+        radial-gradient(ellipse at 66% 66%, black 5%, transparent 40%),
+        radial-gradient(ellipse at 33% 33%, black 5%, transparent 40%),
+        radial-gradient(ellipse at 66% 33%, black 5%, transparent 40%),
+        radial-gradient(ellipse at 33% 66%, black 5%, transparent 40%),
+        conic-gradient(from var(--cursor-angle) at center, transparent 5%, black 15%, black 85%, transparent 95%);
+    mask-image:
+        linear-gradient(to bottom, black, black),
+        radial-gradient(ellipse at 50% 50%, black 40%, transparent 65%),
+        radial-gradient(ellipse at 66% 66%, black 5%, transparent 40%),
+        radial-gradient(ellipse at 33% 33%, black 5%, transparent 40%),
+        radial-gradient(ellipse at 66% 33%, black 5%, transparent 40%),
+        radial-gradient(ellipse at 33% 66%, black 5%, transparent 40%),
+        conic-gradient(from var(--cursor-angle) at center, transparent 5%, black 15%, black 85%, transparent 95%);
+
+    -webkit-mask-composite: destination-out, source-over, source-over, source-over, source-over, source-over;
+    mask-composite: subtract, add, add, add, add, add;
+    opacity: calc(var(--fill-opacity, 0.45) * (var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+    mix-blend-mode: soft-light;
+}
+
+/* outer glow layer */
+.border-glow-card > .edge-light {
+    inset: calc(var(--glow-padding) * -1);
+    pointer-events: none;
+    z-index: 1;
+
+    -webkit-mask-image:
+        conic-gradient(
+            from var(--cursor-angle) at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%
+        );
+    mask-image:
+        conic-gradient(
+            from var(--cursor-angle) at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%
+        );
+
+    opacity: calc((var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity)));
+    mix-blend-mode: plus-lighter;
+}
+
+.border-glow-card > .edge-light::before {
+    content: "";
+    position: absolute;
+    inset: var(--glow-padding);
+    border-radius: inherit;
+    box-shadow:
+        inset 0 0 0 1px var(--glow-color, hsl(205deg 96% 40% / 100%)),
+        inset 0 0 1px 0 var(--glow-color-60, hsl(205deg 96% 40% / 60%)),
+        inset 0 0 3px 0 var(--glow-color-50, hsl(205deg 96% 40% / 50%)),
+        inset 0 0 6px 0 var(--glow-color-40, hsl(205deg 96% 40% / 40%)),
+        inset 0 0 15px 0 var(--glow-color-30, hsl(205deg 96% 40% / 30%)),
+        inset 0 0 25px 2px var(--glow-color-20, hsl(205deg 96% 40% / 20%)),
+        inset 0 0 50px 2px var(--glow-color-10, hsl(205deg 96% 40% / 10%)),
+        0 0 1px 0 var(--glow-color-60, hsl(205deg 96% 40% / 60%)),
+        0 0 3px 0 var(--glow-color-50, hsl(205deg 96% 40% / 50%)),
+        0 0 6px 0 var(--glow-color-40, hsl(205deg 96% 40% / 40%)),
+        0 0 15px 0 var(--glow-color-30, hsl(205deg 96% 40% / 30%)),
+        0 0 25px 2px var(--glow-color-20, hsl(205deg 96% 40% / 20%)),
+        0 0 50px 2px var(--glow-color-10, hsl(205deg 96% 40% / 10%));
+}
+
+.border-glow-inner {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: inherit;
+    overflow: hidden;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+
+

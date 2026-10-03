@@ -1,0 +1,82 @@
+/* ==========================================================================
+   React Bits - Dock Component Styles
+   Color Scheme 23: Sapphire Nightfall Whisper
+   ========================================================================== */
+
+.dock-outer {
+  margin: 0 0.5rem;
+  display: flex;
+  max-width: 100%;
+  align-items: center;
+}
+
+.dock-panel {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  width: fit-content;
+  gap: 0.75rem;
+  border-radius: 1.25rem;
+  background-color: rgba(38, 43, 64, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(83, 121, 174, 0.28);
+  padding: 0 0.625rem 0.625rem;
+  box-shadow: 0 10px 30px -5px rgba(4, 116, 196, 0.25), 0 0 0 1px rgba(168, 196, 236, 0.1);
+}
+
+.dock-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background-color: rgba(44, 68, 76, 0.45);
+  border: 1px solid rgba(83, 121, 174, 0.3);
+  box-shadow:
+    0 4px 10px -2px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(4, 116, 196, 0.15);
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.dock-item:hover,
+.dock-item:focus-visible {
+  background-color: rgba(4, 116, 196, 0.35);
+  border-color: #0474C4;
+  box-shadow: 0 0 15px rgba(4, 116, 196, 0.4);
+}
+
+.dock-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #A8C4EC;
+  transition: color 0.2s ease;
+}
+
+.dock-item:hover .dock-icon {
+  color: #ffffff;
+}
+
+.dock-label {
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  width: fit-content;
+  white-space: pre;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(83, 121, 174, 0.35);
+  background-color: #1C2030;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #A8C4EC;
+  transform: translateX(-50%);
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
