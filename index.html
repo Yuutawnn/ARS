@@ -233,21 +233,21 @@
     </section>
 
     <!-- ==========================================================================
-       SHOWCASE 3D CIRCULAR CAROUSEL SECTION (REACT BITS CIRCULAR CAROUSEL)
-       Không gian xoay vòng 3D hiển thị Artwork, Huy hiệu và Đối tác của clan
+       ALLIES & PARTNERS SECTION (ĐỒNG MINH & ĐỐI TÁC - 3D CIRCULAR CAROUSEL)
+       Xoay vòng 3D hình ảnh Partner/Ally kết hợp thông tin trực tuyến Discord Live
        ========================================================================== -->
-    <section id="showcase" class="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto z-10 relative">
+    <section id="partners" class="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto z-10 relative">
         <div class="text-center mb-10 reveal delay-100">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#06457F]/30 border border-[#0474C4]/35 text-[#A8C4EC] text-xs font-mono mb-4">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#0474C4]"></i>
-                <span>REACT BITS • 3D CIRCULAR CAROUSEL</span>
+                <i data-lucide="handshake" class="w-3.5 h-3.5 text-[#0474C4]"></i>
+                <span>MẠNG LƯỚI LIÊN MINH • 3D CIRCULAR CAROUSEL</span>
             </div>
 
             <h2 class="text-3xl sm:text-5xl font-black font-heading text-white uppercase tracking-tight mb-3">
-                BỘ SƯU TẬP 3D CLAN
+                ĐỒNG MINH & ĐỐI TÁC
             </h2>
             <p class="text-[#A8C4EC] text-sm sm:text-base font-medium max-w-2xl mx-auto mb-6">
-                Không gian 3D tương tác xoay vòng hình ảnh Artwork, Huy hiệu và các đối tác của ARS Pauline. Kéo thả chuột hoặc vuốt ngón tay để xoay vòng!
+                Các đồng minh và đối tác chiến lược đồng hành cùng ARS Pauline. Kéo thả hoặc lướt chuột để xoay vòng 3D và khám phá từng máy chủ!
             </p>
             <div class="w-16 h-1 bg-gradient-to-r from-[#0474C4] to-[#A8C4EC] rounded-full mx-auto mb-8"></div>
 
@@ -269,37 +269,39 @@
         </div>
 
         <!-- 3D Carousel Stage with Border Glow Card Frame -->
-        <div class="border-glow-card rounded-3xl bg-black/80 shadow-2xl shadow-[#0474C4]/10 reveal delay-200 overflow-hidden relative" style="--border-radius: 24px; --glow-padding: 30px;">
+        <div class="border-glow-card rounded-3xl bg-black/85 shadow-2xl shadow-[#0474C4]/10 reveal delay-200 overflow-hidden relative" style="--border-radius: 24px; --glow-padding: 30px;">
             <span class="edge-light"></span>
             <div class="border-glow-inner p-2 sm:p-4">
-                <div id="circular-carousel-container" class="w-full h-[480px] sm:h-[560px] relative"></div>
+                <div id="circular-carousel-container" class="w-full h-[460px] sm:h-[540px] relative"></div>
             </div>
         </div>
-    </section>
 
-    <!-- ==========================================================================
-       ALLIES & PARTNERS SECTION (ĐỒNG MINH & ĐỐI TÁC - SYNC DISCORD AVATAR & NAME)
-       Thiết kế Editorial tinh giản trên nền đen AMOLED, không lạm dụng card
-       ========================================================================== -->
-    <section id="partners" class="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto z-10 relative">
-        <div class="reveal delay-100 mb-10 sm:mb-12">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#06457F]/30 border border-[#0474C4]/35 text-[#A8C4EC] text-xs font-mono mb-4">
-                <i data-lucide="handshake" class="w-3.5 h-3.5 text-[#0474C4]"></i>
-                <span>MẠNG LƯỚI LIÊN MINH</span>
+        <!-- Active Partner Live Detail Card Below Carousel -->
+        <div id="active-partner-card" class="mt-5 p-4 sm:p-5 rounded-2xl bg-black/70 border border-[#0474C4]/30 shadow-xl shadow-[#0474C4]/5 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4 transition-all duration-300 reveal delay-300">
+            <div class="flex items-center gap-4 text-left w-full sm:w-auto">
+                <div class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl p-[1px] bg-gradient-to-b from-[#0474C4]/60 to-[#5379AE]/20 flex-shrink-0 shadow-md shadow-[#0474C4]/20">
+                    <img id="active-partner-avatar" src="assets/images/partners/eraidontop.webp" alt="Partner Avatar" class="w-full h-full object-cover rounded-[15px]">
+                    <span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-black" title="Trực tuyến"></span>
+                </div>
+                <div class="min-w-0 flex-1">
+                    <div class="flex items-center gap-2 mb-1 flex-wrap">
+                        <span id="active-partner-badge" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#0474C4]/25 text-[#A8C4EC] border border-[#0474C4]/40">ĐỒNG MINH</span>
+                        <span id="active-partner-code" class="text-xs font-mono text-[#5379AE]">#eraidontop</span>
+                    </div>
+                    <h4 id="active-partner-name" class="font-heading font-bold text-white text-base sm:text-lg truncate">Eternal Raid | ERA</h4>
+                    <p id="active-partner-tagline" class="text-xs text-slate-400 font-mono line-clamp-1 mt-0.5">The Best Clan Raid in Vietnam</p>
+                </div>
             </div>
-
-            <h2 class="text-3xl sm:text-5xl font-black font-heading text-white uppercase tracking-tight mb-3">
-                ĐỒNG MINH & ĐỐI TÁC
-            </h2>
-            <p class="text-[#A8C4EC] text-sm sm:text-base font-medium mb-6">
-                Các partner và ally của clan
-            </p>
-            <div class="w-16 h-1 bg-gradient-to-r from-[#0474C4] to-[#A8C4EC] rounded-full"></div>
-        </div>
-
-        <!-- Dynamic Partners Grid (Rendered from data.js & synced live with Discord API) -->
-        <div id="partners-list" class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-            <!-- Render từ data.js -->
+            <div class="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto border-t sm:border-t-0 pt-3 sm:pt-0 border-[#5379AE]/15">
+                <div class="text-left sm:text-right text-xs font-mono text-slate-400">
+                    <span id="active-partner-stats" class="text-emerald-400 font-semibold block">• 215 online</span>
+                    <span id="active-partner-mems" class="text-slate-400 text-[11px] block">2,345 members</span>
+                </div>
+                <a id="active-partner-btn" href="https://discord.gg/eraidontop" target="_blank" class="btn-shimmer px-5 py-2.5 rounded-xl bg-[#0474C4] hover:bg-[#06457F] text-white font-bold text-xs uppercase tracking-wider font-heading transition-all shadow-md shadow-[#0474C4]/20 flex items-center justify-center gap-2 shrink-0">
+                    <span>Gia Nhập Server</span>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
         </div>
     </section>
 

@@ -183,7 +183,8 @@
         const step = 360 / count;
 
         const n = Math.max(count, 3);
-        const pitch = (along + gap) * layout.spread;
+        const spread = options.spread !== undefined ? options.spread : layout.spread;
+        const pitch = (along + gap) * spread;
         const chord = pitch / (2 * Math.sin(Math.PI / n));
         const arc = (n * pitch) / (2 * Math.PI);
         const radius = Math.max(chord + (arc - chord) * curveValue, along * 0.6);

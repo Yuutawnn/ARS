@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initRevealAnimations();
     initCardTilt();
     initBorderGlow();
-    initShowcaseCarousel();
+    initPartnersCarousel();
     syncLiveDiscordInvites();
 });
 
@@ -251,13 +251,6 @@ function initDockNav() {
                 }
             },
             {
-                icon: 'sparkles',
-                label: 'Bộ Sưu Tập',
-                onClick: () => {
-                    document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' });
-                }
-            },
-            {
                 icon: 'handshake',
                 label: 'Liên Minh',
                 onClick: () => {
@@ -389,29 +382,23 @@ function syncLiveDiscordInvites() {
             })
             .then(data => {
                 if (data && data.guild) {
-                    // 1. Live Server Name
-                    const nameEl = document.getElementById(`partner-name-${partner.code}`);
-                    if (nameEl && data.guild.name) {
-                        nameEl.textContent = data.guild.name;
-                    }
-
-                    // 2. Live Server Avatar (Supports animated GIF or WebP)
-                    const imgEl = document.getElementById(`partner-img-${partner.code}`);
-                    if (imgEl && data.guild.icon) {
+                    if (data.guild.name) partner.name = data.guild.name;
+                    if (data.guild.icon) {
                         const isAnimated = data.guild.icon.startsWith('a_');
                         const ext = isAnimated ? 'gif' : 'webp';
-                        imgEl.src = `https://cdn.discordapp.com/icons/${data.guild.id}/${data.guild.icon}.${ext}?size=128`;
+                        partner.iconUrl = `https://cdn.discordapp.com/icons/${data.guild.id}/${data.guild.icon}.${ext}?size=128`;
+                    }
+                    if (typeof data.approximate_presence_count === 'number') {
+                        partner.presence = data.approximate_presence_count;
+                    }
+                    if (typeof data.approximate_member_count === 'number') {
+                        partner.members = data.approximate_member_count;
                     }
 
-                    // 3. Live Presence & Member Counts
-                    const onlineEl = document.getElementById(`partner-online-${partner.code}`);
-                    if (onlineEl && typeof data.approximate_presence_count === 'number') {
-                        onlineEl.textContent = data.approximate_presence_count.toLocaleString();
-                    }
-
-                    const membersEl = document.getElementById(`partner-members-${partner.code}`);
-                    if (membersEl && typeof data.approximate_member_count === 'number') {
-                        membersEl.textContent = data.approximate_member_count.toLocaleString();
+                    // Update currently active partner card if matching
+                    const currentPartner = ClanData.partners[currentActivePartnerIndex];
+                    if (currentPartner && currentPartner.code === partner.code) {
+                        updateActivePartnerUI(currentActivePartnerIndex);
                     }
                 }
             })
@@ -589,29 +576,83 @@ function initBorderGlow() {
 }
 
 /* ==========================================================================
-   8. REACT BITS CIRCULAR CAROUSEL INTEGRATION
+   8. REACT BITS CIRCULAR CAROUSEL INTEGRATION (PARTNERS & ALLIES 3D RING)
    ========================================================================== */
-let showcaseCarouselInstance = null;
+let partnersCarouselInstance = null;
+let currentActivePartnerIndex = 0;
 
-function initShowcaseCarousel(currentPreset = 'cylinder') {
+function getPartnerCarouselItems() {
+    if (typeof ClanData === 'undefined' || !ClanData.partners) return [];
+    return ClanData.partners.map(partner => ({
+        src: partner.avatar || partner.iconUrl,
+        alt: partner.name,
+        title: partner.name,
+        subtitle: `${partner.typeLabel || partner.type} • ${partner.presence ? partner.presence.toLocaleString() : '---'} Online • ${partner.members ? partner.members.toLocaleString() : '---'} Mems`,
+        inviteUrl: partner.inviteUrl,
+        code: partner.code,
+        type: partner.type,
+        typeLabel: partner.typeLabel || partner.type,
+        tagline: partner.tagline || '',
+        presence: partner.presence,
+        members: partner.members
+    }));
+}
+
+function updateActivePartnerUI(index) {
+    if (typeof ClanData === 'undefined' || !ClanData.partners) return;
+    currentActivePartnerIndex = index;
+    const partner = ClanData.partners[index];
+    if (!partner) return;
+
+    const avatarEl = document.getElementById('active-partner-avatar');
+    const badgeEl = document.getElementById('active-partner-badge');
+    const codeEl = document.getElementById('active-partner-code');
+    const nameEl = document.getElementById('active-partner-name');
+    const taglineEl = document.getElementById('active-partner-tagline');
+    const statsEl = document.getElementById('active-partner-stats');
+    const memsEl = document.getElementById('active-partner-mems');
+    const btnEl = document.getElementById('active-partner-btn');
+
+    if (avatarEl) {
+        avatarEl.src = partner.avatar || partner.iconUrl;
+        avatarEl.alt = partner.name;
+    }
+    if (badgeEl) {
+        badgeEl.textContent = partner.typeLabel || partner.type;
+        if (partner.type.includes('ALLY')) {
+            badgeEl.className = 'px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#0474C4]/25 text-[#A8C4EC] border border-[#0474C4]/40';
+        } else {
+            badgeEl.className = 'px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#5379AE]/20 text-slate-300 border border-[#5379AE]/30';
+        }
+    }
+    if (codeEl) codeEl.textContent = `#${partner.code}`;
+    if (nameEl) nameEl.textContent = partner.name;
+    if (taglineEl) taglineEl.textContent = partner.tagline || 'Cộng đồng đối tác đồng hành cùng ARS Pauline.';
+    if (statsEl) statsEl.textContent = `• ${partner.presence ? partner.presence.toLocaleString() : '---'} online`;
+    if (memsEl) memsEl.textContent = `${partner.members ? partner.members.toLocaleString() : '---'} members`;
+    if (btnEl) btnEl.href = partner.inviteUrl;
+}
+
+function initPartnersCarousel(currentPreset = 'cylinder') {
     const container = document.getElementById('circular-carousel-container');
     if (!container || typeof window.initCircularCarousel !== 'function') return;
 
-    if (showcaseCarouselInstance) {
-        showcaseCarouselInstance.destroy();
-        showcaseCarouselInstance = null;
+    if (partnersCarouselInstance) {
+        partnersCarouselInstance.destroy();
+        partnersCarouselInstance = null;
     }
 
-    const items = (typeof ClanData !== 'undefined' && ClanData.showcase) ? ClanData.showcase : undefined;
+    const items = getPartnerCarouselItems();
     const isMobile = window.innerWidth < 640;
 
-    showcaseCarouselInstance = window.initCircularCarousel('circular-carousel-container', {
+    partnersCarouselInstance = window.initCircularCarousel('circular-carousel-container', {
         items: items,
         preset: currentPreset,
         intro: 'spin',
         cardWidth: isMobile ? 180 : 220,
         aspectRatio: 1,
-        gap: isMobile ? 18 : 25,
+        gap: isMobile ? 22 : 35,
+        spread: 1.35,
         speed: 14,
         captions: true,
         autoplay: 'drift',
@@ -619,12 +660,21 @@ function initShowcaseCarousel(currentPreset = 'cylinder') {
         snap: true,
         pauseOnHover: true,
         focusOnClick: true,
-        parallax: 0.3,
+        parallax: 0.35,
         stretch: 0.5,
         depthFade: 0.55,
         fadeColor: '#000000',
-        cornerRadius: 14
+        cornerRadius: 16,
+        onChange: (index) => {
+            updateActivePartnerUI(index);
+        },
+        onItemClick: (item, index) => {
+            updateActivePartnerUI(index);
+        }
     });
+
+    // Initialize with first partner
+    updateActivePartnerUI(0);
 
     // Preset switcher buttons
     const presetButtons = document.querySelectorAll('#carousel-preset-controls .preset-btn');
@@ -640,7 +690,7 @@ function initShowcaseCarousel(currentPreset = 'cylinder') {
             btn.classList.add('active', 'bg-[#0474C4]', 'text-white', 'shadow-md', 'shadow-[#0474C4]/30');
             btn.classList.remove('bg-black/60', 'border', 'border-[#5379AE]/30', 'text-slate-300');
 
-            initShowcaseCarousel(preset);
+            initPartnersCarousel(preset);
         });
     });
 }
