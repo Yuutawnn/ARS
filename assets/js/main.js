@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initRevealAnimations();
     initCardTilt();
     initBorderGlow();
+    initShowcaseCarousel();
     syncLiveDiscordInvites();
 });
 
@@ -247,6 +248,13 @@ function initDockNav() {
                 label: 'Khởi Đầu',
                 onClick: () => {
                     document.getElementById('origin')?.scrollIntoView({ behavior: 'smooth' });
+                }
+            },
+            {
+                icon: 'sparkles',
+                label: 'Bộ Sưu Tập',
+                onClick: () => {
+                    document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' });
                 }
             },
             {
@@ -579,6 +587,64 @@ function initBorderGlow() {
         });
     });
 }
+
+/* ==========================================================================
+   8. REACT BITS CIRCULAR CAROUSEL INTEGRATION
+   ========================================================================== */
+let showcaseCarouselInstance = null;
+
+function initShowcaseCarousel(currentPreset = 'cylinder') {
+    const container = document.getElementById('circular-carousel-container');
+    if (!container || typeof window.initCircularCarousel !== 'function') return;
+
+    if (showcaseCarouselInstance) {
+        showcaseCarouselInstance.destroy();
+        showcaseCarouselInstance = null;
+    }
+
+    const items = (typeof ClanData !== 'undefined' && ClanData.showcase) ? ClanData.showcase : undefined;
+    const isMobile = window.innerWidth < 640;
+
+    showcaseCarouselInstance = window.initCircularCarousel('circular-carousel-container', {
+        items: items,
+        preset: currentPreset,
+        intro: 'spin',
+        cardWidth: isMobile ? 180 : 220,
+        aspectRatio: 1,
+        gap: isMobile ? 18 : 25,
+        speed: 14,
+        captions: true,
+        autoplay: 'drift',
+        draggable: true,
+        snap: true,
+        pauseOnHover: true,
+        focusOnClick: true,
+        parallax: 0.3,
+        stretch: 0.5,
+        depthFade: 0.55,
+        fadeColor: '#000000',
+        cornerRadius: 14
+    });
+
+    // Preset switcher buttons
+    const presetButtons = document.querySelectorAll('#carousel-preset-controls .preset-btn');
+    presetButtons.forEach(btn => {
+        if (btn.dataset.boundPreset) return;
+        btn.dataset.boundPreset = 'true';
+        btn.addEventListener('click', () => {
+            const preset = btn.dataset.preset;
+            presetButtons.forEach(b => {
+                b.classList.remove('active', 'bg-[#0474C4]', 'text-white', 'shadow-md', 'shadow-[#0474C4]/30');
+                b.classList.add('bg-black/60', 'border', 'border-[#5379AE]/30', 'text-slate-300');
+            });
+            btn.classList.add('active', 'bg-[#0474C4]', 'text-white', 'shadow-md', 'shadow-[#0474C4]/30');
+            btn.classList.remove('bg-black/60', 'border', 'border-[#5379AE]/30', 'text-slate-300');
+
+            initShowcaseCarousel(preset);
+        });
+    });
+}
+
 
 
 

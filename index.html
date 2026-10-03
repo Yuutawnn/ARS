@@ -233,6 +233,51 @@
     </section>
 
     <!-- ==========================================================================
+       SHOWCASE 3D CIRCULAR CAROUSEL SECTION (REACT BITS CIRCULAR CAROUSEL)
+       Không gian xoay vòng 3D hiển thị Artwork, Huy hiệu và Đối tác của clan
+       ========================================================================== -->
+    <section id="showcase" class="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto z-10 relative">
+        <div class="text-center mb-10 reveal delay-100">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#06457F]/30 border border-[#0474C4]/35 text-[#A8C4EC] text-xs font-mono mb-4">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#0474C4]"></i>
+                <span>REACT BITS • 3D CIRCULAR CAROUSEL</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-black font-heading text-white uppercase tracking-tight mb-3">
+                BỘ SƯU TẬP 3D CLAN
+            </h2>
+            <p class="text-[#A8C4EC] text-sm sm:text-base font-medium max-w-2xl mx-auto mb-6">
+                Không gian 3D tương tác xoay vòng hình ảnh Artwork, Huy hiệu và các đối tác của ARS Pauline. Kéo thả chuột hoặc vuốt ngón tay để xoay vòng!
+            </p>
+            <div class="w-16 h-1 bg-gradient-to-r from-[#0474C4] to-[#A8C4EC] rounded-full mx-auto mb-8"></div>
+
+            <!-- Shape Preset Switcher Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3" id="carousel-preset-controls">
+                <button type="button" data-preset="cylinder" class="preset-btn active px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase transition-all bg-[#0474C4] text-white shadow-md shadow-[#0474C4]/30 cursor-pointer">
+                    Cylinder
+                </button>
+                <button type="button" data-preset="orbit" class="preset-btn px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase transition-all bg-black/60 border border-[#5379AE]/30 text-slate-300 hover:text-white hover:border-[#0474C4]/60 cursor-pointer">
+                    Orbit
+                </button>
+                <button type="button" data-preset="panorama" class="preset-btn px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase transition-all bg-black/60 border border-[#5379AE]/30 text-slate-300 hover:text-white hover:border-[#0474C4]/60 cursor-pointer">
+                    Panorama
+                </button>
+                <button type="button" data-preset="wheel" class="preset-btn px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase transition-all bg-black/60 border border-[#5379AE]/30 text-slate-300 hover:text-white hover:border-[#0474C4]/60 cursor-pointer">
+                    Wheel
+                </button>
+            </div>
+        </div>
+
+        <!-- 3D Carousel Stage with Border Glow Card Frame -->
+        <div class="border-glow-card rounded-3xl bg-black/80 shadow-2xl shadow-[#0474C4]/10 reveal delay-200 overflow-hidden relative" style="--border-radius: 24px; --glow-padding: 30px;">
+            <span class="edge-light"></span>
+            <div class="border-glow-inner p-2 sm:p-4">
+                <div id="circular-carousel-container" class="w-full h-[480px] sm:h-[560px] relative"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
        ALLIES & PARTNERS SECTION (ĐỒNG MINH & ĐỐI TÁC - SYNC DISCORD AVATAR & NAME)
        Thiết kế Editorial tinh giản trên nền đen AMOLED, không lạm dụng card
        ========================================================================== -->
@@ -358,6 +403,7 @@
     <!-- JavaScript Files -->
     <script src="assets/js/ogl.js"></script>
     <script src="assets/js/pattern-waves.js"></script>
+    <script src="assets/js/circular-carousel.js"></script>
     <script src="assets/js/data.js"></script>
     <script src="assets/js/dock.js"></script>
     <script src="assets/js/main.js"></script>
