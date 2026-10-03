@@ -806,5 +806,24 @@ h1.glow-text span {
     height: 100%;
 }
 
+/* ==========================================================================
+   ARS SECURITY - Anti-DevTools & Protection Styles
+   ========================================================================== */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+
+.animate-shake {
+    animation: shake 0.4s ease-in-out;
+}
+
+#ars-security-overlay {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+
 
 
