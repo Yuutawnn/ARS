@@ -26,7 +26,7 @@ const ClanData = {
             formerName: "Survivor of Riots",
             originGame: "Sorcerer Battlegrounds",
             establishedDate: "Tháng 3, 2024",
-            compServers: "TSBCC & TSBVN",
+            compServers: "TSBVH & TSBVN",
             rankVN: "Former #1 VN",
             rankAsia: "Former #3 Asia",
             discord: "discord.gg/arsontop"
@@ -36,8 +36,8 @@ const ClanData = {
     // Câu chuyện khởi đầu & Kỷ niệm của nhóm
     origin: {
         title: "Khởi Đầu Của Ars Pauline",
-        subtitle: "Khởi lập khoảng tháng 3/2024 từ Survivor of Riots (Sorcerer Battlegrounds) đến The Strongest Battlegrounds (TSBCC & TSBVN)",
-        compServers: ["TSBCC", "TSVN"],
+        subtitle: "Khởi lập khoảng tháng 3/2024 từ Survivor of Riots (Sorcerer Battlegrounds) đến The Strongest Battlegrounds (TSBVH & TSBVN)",
+        compServers: ["TSBVH", "TSVN"],
         formerName: "Survivor of Riots",
         originGame: "Sorcerer Battlegrounds",
         establishedDate: "Tháng 3/2024",
@@ -45,7 +45,7 @@ const ClanData = {
         fandomUrl: "https://typemoon.fandom.com/vi/wiki/Ars_Paulina",
         paragraphs: [
             "Tiền thân của clan là <strong class=\"text-white font-bold\">Survivor of Riots</strong>, ra đời vào khoảng <strong class=\"text-[#A8C4EC] font-bold\">tháng 3 năm 2024</strong>, ban đầu bắt nguồn từ tựa game <strong class=\"text-white font-bold\">Sorcerer Battlegrounds</strong> — nơi những người bạn có chung niềm đam mê đối kháng trong Roblox lần đầu tụ họp và gắn bó cùng nhau.",
-            "Sau này khi chuyển sang hoạt động chính tại <strong class=\"text-white font-bold\">The Strongest Battlegrounds</strong>, nhóm đã cùng nhau tham gia vào các server comp hàng đầu là <strong class=\"text-white font-bold\">TSBCC</strong> và <strong class=\"text-white font-bold\">TSBVN</strong>, từng đạt thứ hạng đỉnh cao <strong class=\"text-[#0474C4] font-bold\">Former #1 VN</strong> và <strong class=\"text-[#A8C4EC] font-bold\">Former #3 Asia</strong>. Kể từ đây, cái tên chính thức <strong class=\"text-white font-bold\">Ars Pauline</strong> được ra đời.",
+            "Sau này khi chuyển sang hoạt động chính tại <strong class=\"text-white font-bold\">The Strongest Battlegrounds</strong>, nhóm đã cùng nhau tham gia vào các server comp hàng đầu là <strong class=\"text-white font-bold\">TSBVH</strong> và <strong class=\"text-white font-bold\">TSBVN</strong>, từng đạt thứ hạng đỉnh cao <strong class=\"text-[#0474C4] font-bold\">Former #1 VN</strong> và <strong class=\"text-[#A8C4EC] font-bold\">Former #3 Asia</strong>. Kể từ đây, cái tên chính thức <strong class=\"text-white font-bold\">Ars Pauline</strong> được ra đời.",
             "Tên gọi của nhóm được lấy cảm hứng từ bảo khí trong vũ trụ <strong class=\"text-white font-bold\">Type-Moon / Fate</strong>: <strong class=\"text-white font-bold\">Ars Paulina</strong>, đi kèm câu châm ngôn mang ý nghĩa khởi đầu đầy tích cực: <strong class=\"text-sky-300 font-bold\">\"Thời Khắc Đăng Quang, Là Lúc Khởi Đầu Vạn Sự\"</strong>."
         ],
         funFact: {
@@ -70,12 +70,12 @@ const ClanData = {
             answer: "Survivor of Riots là tên gọi ban đầu của nhóm từ thời còn chơi Sorcerer Battlegrounds, trước khi anh em chính thức đổi sang Ars Pauline."
         },
         {
-            question: "TSBCC và TSBVN là gì?",
+            question: "TSBVH và TSBVN là gì?",
             answer: "Đó là các server comp (server competitive) của cộng đồng The Strongest Battlegrounds, nơi anh em tham gia giao lưu và thi đấu cọ xát kỹ năng."
         },
         {
             question: "Thành tích thi đấu competitive nổi bật của clan là gì?",
-            answer: "Trong thời kỳ thi đấu đỉnh cao tại các server comp của The Strongest Battlegrounds (TSBCC & TSBVN), ARS Pauline từng xác lập thứ hạng đáng tự hào: Former #1 Việt Nam (VN) và Former #3 Châu Á (Asia)."
+            answer: "Trong thời kỳ thi đấu đỉnh cao tại các server comp của The Strongest Battlegrounds (TSBVH & TSBVN), ARS Pauline từng xác lập thứ hạng đáng tự hào: Former #1 Việt Nam (VN) và Former #3 Châu Á (Asia)."
         },
         {
             question: "Server / Clan Ars Pauline ra đời từ thời gian nào?",
