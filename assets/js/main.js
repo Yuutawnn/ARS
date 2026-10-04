@@ -79,7 +79,7 @@ function renderAllClanData() {
                 lineIndex++;
                 return `
                     <div class="block-reveal-block block-delay-${Math.min(lineIndex, 12)}">
-                        <span class="block-text text-slate-200 text-sm sm:text-base leading-relaxed">${sentence}</span>
+                        <span class="block-text text-slate-200 text-sm sm:text-base leading-relaxed inline-block py-0.5">${sentence}</span>
                     </div>`;
             }).join('');
             return `<div class="mb-4">${sentencesHtml}</div>`;
@@ -102,13 +102,13 @@ function renderAllClanData() {
                     <span class="edge-light"></span>
                     <div class="border-glow-inner p-5 sm:p-6">
                         <div class="block-reveal block-delay-${funFactTitleDelay}">
-                            <div class="block-text flex items-center gap-2 text-[#A8C4EC] font-bold font-heading text-sm mb-2">
+                            <div class="block-text flex items-center gap-2 text-[#A8C4EC] font-bold font-heading text-sm py-0.5 mb-2">
                                 <i data-lucide="sparkles" class="w-4 h-4 text-[#0474C4]"></i>
                                 <span>${ClanData.origin.funFact.title}</span>
                             </div>
                         </div>
                         <div class="block-reveal-block block-delay-${funFactContentDelay}">
-                            <p class="block-text text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            <p class="block-text text-slate-300 text-xs sm:text-sm leading-relaxed py-0.5">
                                 ${formatMarkdown(ClanData.origin.funFact.content)}
                             </p>
                         </div>
@@ -117,7 +117,7 @@ function renderAllClanData() {
 
                 <!-- Reference Link -->
                 <div class="block-reveal block-delay-${refLinkDelay}">
-                    <div class="block-text mt-6 flex flex-wrap items-center gap-3">
+                    <div class="block-text mt-6 py-0.5 flex flex-wrap items-center gap-3">
                         <a href="${ClanData.origin.fandomUrl}" target="_blank" class="inline-flex items-center gap-2 text-xs text-[#A8C4EC] hover:text-white transition-colors font-mono group">
                             <i data-lucide="external-link" class="w-3.5 h-3.5 text-[#0474C4]"></i>
                             <span class="underline underline-offset-4 group-hover:text-white">Nguồn cảm hứng: Type-Moon Fandom (Ars Paulina)</span>
@@ -321,7 +321,7 @@ function initDockNav() {
                 }
             },
             {
-                icon: 'message-square',
+                icon: 'discord',
                 label: 'Discord Clan',
                 onClick: () => {
                     window.open('https://discord.gg/arsontop', '_blank');
@@ -353,18 +353,28 @@ function initDockNav() {
    CANVAS BLOCK REVEAL ANIMATION (IntersectionObserver Trigger)
    - Quan sát mỗi .block-reveal-group
    - Khi cuộn tới, thêm .is-revealing vào tất cả con .block-reveal / .block-reveal-block
+   - Sau khi hoàn thành animation, gỡ bỏ overflow: hidden để bảo toàn dấu tiếng Việt
    - Animation chỉ chạy 1 lần (unobserve sau khi kích hoạt)
    ========================================================================== */
 function initBlockReveal() {
     const groups = document.querySelectorAll('.block-reveal-group');
     if (!groups.length) return;
 
+    function activateReveal(items) {
+        items.forEach(el => {
+            el.classList.add('is-revealing');
+            // Mở hoàn toàn overflow: visible sau khi animation chạy xong để không bao giờ cắt dấu mũ, dấu móc
+            setTimeout(() => {
+                el.classList.add('is-revealed');
+                el.style.overflow = 'visible';
+            }, 1600);
+        });
+    }
+
     if (!('IntersectionObserver' in window)) {
         // Fallback: hiện tất cả ngay lập tức
         groups.forEach(group => {
-            group.querySelectorAll('.block-reveal, .block-reveal-block').forEach(el => {
-                el.classList.add('is-revealing');
-            });
+            activateReveal(group.querySelectorAll('.block-reveal, .block-reveal-block'));
         });
         return;
     }
@@ -373,9 +383,7 @@ function initBlockReveal() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const group = entry.target;
-                group.querySelectorAll('.block-reveal, .block-reveal-block').forEach(el => {
-                    el.classList.add('is-revealing');
-                });
+                activateReveal(group.querySelectorAll('.block-reveal, .block-reveal-block'));
                 obs.unobserve(group); // Chỉ chạy 1 lần
             }
         });

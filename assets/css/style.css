@@ -47,6 +47,11 @@ body {
     background-color: #000000;
 }
 
+/* Bảo toàn khoảng trống cho dấu tiếng Việt trên các tiêu đề lớn */
+h1, h2, h3, h4, .font-heading {
+    line-height: 1.22;
+}
+
 /* Custom Sapphire Scrollbar on Black */
 ::-webkit-scrollbar {
     width: 6px;
@@ -388,17 +393,31 @@ h1.glow-text span {
    - Kích hoạt bởi IntersectionObserver khi cuộn tới
    ========================================================================== */
 
-/* 1. Container bao bọc */
+/* 1. Container bao bọc (Có padding bù trừ để bảo toàn trọn vẹn dấu mũ, dấu móc tiếng Việt) */
 .block-reveal {
     position: relative;
     display: inline-block;
     overflow: hidden;
+    padding-top: 0.28em;
+    margin-top: -0.28em;
+    padding-bottom: 0.16em;
+    margin-bottom: -0.16em;
 }
 
 .block-reveal-block {
     position: relative;
     display: block;
     overflow: hidden;
+    padding-top: 0.28em;
+    margin-top: -0.28em;
+    padding-bottom: 0.16em;
+    margin-bottom: -0.16em;
+}
+
+/* Sau khi quét màu xong, giải phóng hoàn toàn overflow để dấu không bao giờ bị cắt */
+.block-reveal.is-revealed,
+.block-reveal-block.is-revealed {
+    overflow: visible !important;
 }
 
 /* 2. Khối màu chuyển động (pseudo-element) */
@@ -432,6 +451,7 @@ h1.glow-text span {
 /* 5. Text ẩn ban đầu, hiện tại 50% */
 .block-text {
     opacity: 0;
+    overflow: visible;
 }
 
 .block-reveal.is-revealing .block-text,
