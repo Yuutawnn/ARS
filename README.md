@@ -4,7 +4,7 @@ Official community landing page for the **ARS PAULINE** clan in **The Strongest 
 
 - **Game**: The Strongest Battlegrounds (Roblox)
 - **Former Rankings**: Former #1 Vietnam • Former #3 Asia
-- **Competitive Servers**: TSBCC & TSBVN
+- **Competitive Servers**: TSBVH & TSBVN
 - **Discord**: [discord.gg/arsontop](https://discord.gg/arsontop)
 - **Est**: Tháng 3/2024
 
