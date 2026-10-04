@@ -35,9 +35,9 @@
 
         // Render HTML
         container.innerHTML = `
-            <div class="dock-panel border-glow-card" style="--border-radius: 9999px; --glow-padding: 24px; --card-bg: rgba(0, 0, 0, 0.88); --edge-sensitivity: 15;" role="toolbar" aria-label="Application dock navigation">
+            <div class="dock-panel border-glow-card" style="--border-radius: 9999px; --glow-padding: 24px; --card-bg: rgba(0, 0, 0, 0.88); --edge-sensitivity: 15; overflow: visible !important;" role="toolbar" aria-label="Application dock navigation">
                 <span class="edge-light"></span>
-                <div class="border-glow-inner dock-inner flex-row items-center justify-center h-full w-full">
+                <div class="border-glow-inner dock-inner flex-row items-center justify-center h-full w-full" style="overflow: visible !important;">
                     ${config.items.map((item, idx) => {
                         let iconMarkup = '';
                         if (item.avatarSrc) {

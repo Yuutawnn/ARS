@@ -282,7 +282,7 @@ function initDockNav() {
 
     window.initDock('dock-container', {
         baseItemSize: 44,
-        magnification: 64,
+        magnification: 68,
         distance: 150,
         items: [
             {
