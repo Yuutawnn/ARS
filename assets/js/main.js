@@ -140,7 +140,15 @@ function renderAllClanData() {
                             <!-- 3D Specular Glare Reflection -->
                             <div class="tilt-card-glare absolute inset-0 pointer-events-none opacity-0 z-20 rounded-2xl"></div>
 
-                            <div class="flex items-start gap-4 sm:gap-5 flex-1">
+                            <!-- Dynamic Hover Partner Banner (Fade In on hover, Fade Out on leave) -->
+                            ${partner.banner ? `
+                            <div class="partner-banner-layer absolute inset-0 pointer-events-none z-0 rounded-2xl overflow-hidden">
+                                <img src="${partner.banner}" alt="${partner.name} banner" class="partner-banner-img w-full h-full object-cover object-center" loading="eager">
+                                <div class="partner-banner-overlay absolute inset-0"></div>
+                            </div>
+                            ` : ''}
+
+                            <div class="flex items-start gap-4 sm:gap-5 flex-1 relative z-10">
                                 <!-- Synced Avatar with thin clean border -->
                                 <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl p-[1px] bg-gradient-to-b from-[#0474C4]/60 to-[#5379AE]/20 flex-shrink-0 group-hover:scale-105 transition-transform duration-300 shadow-lg shadow-[#0474C4]/15">
                                     <img id="partner-img-${partner.code}" src="${partner.avatar || partner.iconUrl}" alt="${partner.name}" class="w-full h-full object-cover rounded-[15px]" onerror="this.src='${partner.iconUrl}'">
