@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initRevealAnimations();
     initCardTilt();
     initBorderGlow();
+    initBlockReveal();
     syncLiveDiscordInvites();
 });
 
@@ -43,37 +44,85 @@ function renderAllClanData() {
             .replace(/\*(.*?)\*/g, '<em class="text-[#A8C4EC]">$1</em>');
     }
 
-    // 2. Render Origin Story
+    // 2. Render Origin Story (Split thành từng câu nhỏ cho block-reveal đẹp hơn)
     const originStoryContainer = document.getElementById('origin-story-container');
     if (originStoryContainer && ClanData.origin) {
-        const paragraphsHtml = ClanData.origin.paragraphs.map((p, idx) => `
-            <p class="text-slate-200 text-sm sm:text-base leading-relaxed mb-4 reveal delay-${Math.min((idx + 1) * 100, 400)}">${formatMarkdown(p)}</p>
-        `).join('');
+        // Tách paragraph thành từng dòng nhỏ cho block-reveal
+        function splitSentences(html) {
+            // Bước 1: Split theo dấu câu kết thúc (. ! ?) theo sau bởi khoảng trắng + chữ hoa
+            let parts = html.split(/(?<=[.!?])\s+(?=[A-ZĐTK""\u201C<])/);
+            
+            // Bước 2: Split thêm theo dấu gạch em-dash ( — ) cho câu dài
+            let result = [];
+            parts.forEach(part => {
+                if (part.length > 80 && part.includes(' — ')) {
+                    const subParts = part.split(/\s*—\s*/);
+                    subParts.forEach((sp, i) => {
+                        if (i < subParts.length - 1) {
+                            result.push(sp.trim() + ' —');
+                        } else {
+                            result.push(sp.trim());
+                        }
+                    });
+                } else {
+                    result.push(part);
+                }
+            });
+            
+            return result.filter(s => s.trim().length > 0);
+        }
+
+        let lineIndex = 0;
+        const allSentencesHtml = ClanData.origin.paragraphs.map((p) => {
+            const sentences = splitSentences(p);
+            const sentencesHtml = sentences.map((sentence) => {
+                lineIndex++;
+                return `
+                    <div class="block-reveal-block block-delay-${Math.min(lineIndex, 12)}">
+                        <span class="block-text text-slate-200 text-sm sm:text-base leading-relaxed">${sentence}</span>
+                    </div>`;
+            }).join('');
+            return `<div class="mb-4">${sentencesHtml}</div>`;
+        }).join('');
+
+        // Fun fact: tách title và content thành 2 dòng
+        lineIndex++;
+        const funFactTitleDelay = Math.min(lineIndex, 12);
+        lineIndex++;
+        const funFactContentDelay = Math.min(lineIndex, 12);
+        lineIndex++;
+        const refLinkDelay = Math.min(lineIndex, 12);
 
         originStoryContainer.innerHTML = `
-            <div class="space-y-4">
-                ${paragraphsHtml}
+            <div class="block-reveal-group space-y-4">
+                ${allSentencesHtml}
                 
                 <!-- Fun fact callout với Border Glow -->
-                <div class="mt-8 border-glow-card rounded-2xl bg-black/60 shadow-lg shadow-[#0474C4]/5 reveal delay-300" style="--border-radius: 18px;">
+                <div class="mt-8 border-glow-card rounded-2xl bg-black/60 shadow-lg shadow-[#0474C4]/5" style="--border-radius: 18px;">
                     <span class="edge-light"></span>
                     <div class="border-glow-inner p-5 sm:p-6">
-                        <div class="flex items-center gap-2 text-[#A8C4EC] font-bold font-heading text-sm mb-2">
-                            <i data-lucide="sparkles" class="w-4 h-4 text-[#0474C4]"></i>
-                            <span>${ClanData.origin.funFact.title}</span>
+                        <div class="block-reveal block-delay-${funFactTitleDelay}">
+                            <div class="block-text flex items-center gap-2 text-[#A8C4EC] font-bold font-heading text-sm mb-2">
+                                <i data-lucide="sparkles" class="w-4 h-4 text-[#0474C4]"></i>
+                                <span>${ClanData.origin.funFact.title}</span>
+                            </div>
                         </div>
-                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                            ${formatMarkdown(ClanData.origin.funFact.content)}
-                        </p>
+                        <div class="block-reveal-block block-delay-${funFactContentDelay}">
+                            <p class="block-text text-slate-300 text-xs sm:text-sm leading-relaxed">
+                                ${formatMarkdown(ClanData.origin.funFact.content)}
+                            </p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Reference Link -->
-                <div class="mt-6 flex flex-wrap items-center gap-3 reveal delay-400">
-                    <a href="${ClanData.origin.fandomUrl}" target="_blank" class="inline-flex items-center gap-2 text-xs text-[#A8C4EC] hover:text-white transition-colors font-mono group">
-                        <i data-lucide="external-link" class="w-3.5 h-3.5 text-[#0474C4]"></i>
-                        <span class="underline underline-offset-4 group-hover:text-white">Nguồn cảm hứng: Type-Moon Fandom (Ars Paulina)</span>
-                    </a>
+                <div class="block-reveal block-delay-${refLinkDelay}">
+                    <div class="block-text mt-6 flex flex-wrap items-center gap-3">
+                        <a href="${ClanData.origin.fandomUrl}" target="_blank" class="inline-flex items-center gap-2 text-xs text-[#A8C4EC] hover:text-white transition-colors font-mono group">
+                            <i data-lucide="external-link" class="w-3.5 h-3.5 text-[#0474C4]"></i>
+                            <span class="underline underline-offset-4 group-hover:text-white">Nguồn cảm hứng: Type-Moon Fandom (Ars Paulina)</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         `;
@@ -290,6 +339,45 @@ function initDockNav() {
             }
         ]
     });
+}
+
+/* ==========================================================================
+   CANVAS BLOCK REVEAL ANIMATION (IntersectionObserver Trigger)
+   - Quan sát mỗi .block-reveal-group
+   - Khi cuộn tới, thêm .is-revealing vào tất cả con .block-reveal / .block-reveal-block
+   - Animation chỉ chạy 1 lần (unobserve sau khi kích hoạt)
+   ========================================================================== */
+function initBlockReveal() {
+    const groups = document.querySelectorAll('.block-reveal-group');
+    if (!groups.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+        // Fallback: hiện tất cả ngay lập tức
+        groups.forEach(group => {
+            group.querySelectorAll('.block-reveal, .block-reveal-block').forEach(el => {
+                el.classList.add('is-revealing');
+            });
+        });
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const group = entry.target;
+                group.querySelectorAll('.block-reveal, .block-reveal-block').forEach(el => {
+                    el.classList.add('is-revealing');
+                });
+                obs.unobserve(group); // Chỉ chạy 1 lần
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.1
+    });
+
+    groups.forEach(group => observer.observe(group));
 }
 
 /* ==========================================================================
