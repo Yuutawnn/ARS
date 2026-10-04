@@ -1200,7 +1200,53 @@ h1.glow-text span {
     }
 }
 
+/* ==========================================================================
+   PARTNER CARD BANNER HOVER EFFECT
+   - Ban đầu hoàn toàn ẩn (opacity: 0)
+   - Khi hover vào tấm card: fade in mượt mà (opacity: 1)
+   - Khi chuột rời khỏi tấm card: fade out êm ái
+   - Kết hợp subtle scale zoom nhẹ tạo chiều sâu 3D sang trọng
+   - Dark gradient overlay bảo đảm độ tương phản và rõ nét cho chữ
+   ========================================================================== */
+.partner-banner-layer {
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity;
+}
 
+.partner-item:hover .partner-banner-layer {
+    opacity: 1;
+}
 
+.partner-banner-img {
+    transform: scale(1.08);
+    transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.partner-item:hover .partner-banner-img {
+    transform: scale(1.0);
+}
+
+.partner-banner-overlay {
+    background: linear-gradient(
+        180deg,
+        rgba(3, 8, 18, 0.62) 0%,
+        rgba(2, 6, 14, 0.78) 45%,
+        rgba(0, 0, 0, 0.94) 100%
+    );
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .partner-banner-img {
+        transform: none !important;
+        transition: none !important;
+    }
+    .partner-banner-layer {
+        transition: opacity 0.2s ease !important;
+    }
+}
 
 
