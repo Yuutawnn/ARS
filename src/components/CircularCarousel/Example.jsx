@@ -3,13 +3,6 @@ import CircularCarousel from './CircularCarousel';
 
 const partnerItems = [
   {
-    src: 'assets/images/partners/eraidontop.webp',
-    alt: 'Eternal Raid ERA',
-    title: 'Eternal Raid | ERA',
-    subtitle: 'Đồng Minh • 2,345 Members • The Best Raid Clan in VN',
-    inviteUrl: 'https://discord.gg/eraidontop'
-  },
-  {
     src: 'assets/images/partners/truekings.webp',
     alt: 'True Kings Community',
     title: 'True Kings | Community',

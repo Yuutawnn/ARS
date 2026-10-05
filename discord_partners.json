@@ -1,19 +1,5 @@
 [
   {
-    "code": "eraidontop",
-    "inviteUrl": "https://discord.gg/eraidontop",
-    "name": "Eternal Raid | ERA",
-    "id": "1479995082743742700",
-    "icon": "39145574b1a3c2dbd124da5d8ee39ec6",
-    "iconUrl": "https://cdn.discordapp.com/icons/1479995082743742700/39145574b1a3c2dbd124da5d8ee39ec6.webp?size=128",
-    "bannerUrl": "https://cdn.discordapp.com/banners/1479995082743742700/ff0c7069209ec137c27ecffe982961aa.webp?size=512",
-    "splashUrl": "https://cdn.discordapp.com/splashes/1479995082743742700/911a31044ebfca6b9e8c9028aa3fd081.webp?size=512",
-    "description": "The Best Clan Raid in Vietnam",
-    "members": 2345,
-    "presence": 215,
-    "localIcon": "assets/images/partners/eraidontop.webp"
-  },
-  {
     "code": "truekings",
     "inviteUrl": "https://discord.gg/truekings",
     "name": "True Kings | Community",

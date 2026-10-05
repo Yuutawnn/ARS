@@ -90,21 +90,6 @@ const ClanData = {
     // Danh sách Đồng Minh (Ally) & Đối Tác (Partner) - Đồng bộ Discord API
     partners: [
         {
-            code: "eraidontop",
-            type: "ALLY CLAN",
-            typeLabel: "Đồng Minh",
-            name: "Eternal Raid | ERA",
-            inviteUrl: "https://discord.gg/eraidontop",
-            avatar: "assets/images/partners/eraidontop.webp",
-            banner: "assets/images/partners banner/eraid.png",
-            iconUrl: "https://cdn.discordapp.com/icons/1479995082743742700/39145574b1a3c2dbd124da5d8ee39ec6.webp?size=128",
-            guildId: "1479995082743742700",
-            iconHash: "39145574b1a3c2dbd124da5d8ee39ec6",
-            tagline: "The Best Clan Raid in Vietnam",
-            members: 2345,
-            presence: 215
-        },
-        {
             code: "truekings",
             type: "PARTNER CLAN",
             typeLabel: "Đối Tác",
@@ -164,12 +149,6 @@ const ClanData = {
             alt: "ARS PAULINE Clan Emblem",
             title: "Emblem of Pauline",
             subtitle: "Khởi Đầu Vạn Sự • Est. Tháng 3/2024"
-        },
-        {
-            src: "assets/images/partners/eraidontop.webp",
-            alt: "Eternal Raid ERA",
-            title: "Eternal Raid | ERA",
-            subtitle: "Đồng Minh Chiến Lược • The Best Raid Clan in VN"
         },
         {
             src: "assets/images/partners/truekings.webp",
