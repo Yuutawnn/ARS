@@ -132,7 +132,7 @@ function renderAllClanData() {
     const partnersContainer = document.getElementById('partners-list');
     if (partnersContainer && ClanData.partners) {
         partnersContainer.innerHTML = ClanData.partners.map((partner, idx) => `
-            <div class="reveal delay-${Math.min((idx + 1) * 100, 400)} h-full">
+            <div class="reveal h-full" style="--stagger-idx: ${idx};">
                 <div class="tilt-card-wrapper w-full h-full">
                     <div class="partner-item tilt-card border-glow-card group relative rounded-2xl bg-black/70 shadow-xl shadow-[#0474C4]/5 cursor-pointer overflow-visible h-full flex flex-col justify-between" data-code="${partner.code}" style="--border-radius: 20px; --edge-sensitivity: 15;">
                         <span class="edge-light"></span>
@@ -206,7 +206,7 @@ function renderAllClanData() {
     const faqContainer = document.getElementById('faq-accordion-container');
     if (faqContainer && ClanData.faqs) {
         faqContainer.innerHTML = ClanData.faqs.map((faq, idx) => `
-            <div class="faq-item border-b border-[#5379AE]/25 py-4 transition-colors reveal delay-${Math.min(idx * 100 + 100, 500)}">
+            <div class="faq-item border-b border-[#5379AE]/25 py-4 transition-colors reveal" style="--stagger-idx: ${idx};">
                 <button class="faq-question w-full flex items-center justify-between py-2 text-left font-medium text-white hover:text-[#A8C4EC] focus:outline-none cursor-pointer group">
                     <span class="text-sm sm:text-base flex items-center gap-3 font-semibold">
                         <span class="text-[#0474C4] font-mono text-xs">#0${idx + 1}</span>
@@ -397,13 +397,24 @@ function initBlockReveal() {
 }
 
 /* ==========================================================================
-   5. INTERSECTION OBSERVER BIDIRECTIONAL REVEAL ANIMATIONS
-   - Tự động hiện khi cuộn tới vùng nhìn
+   5. INTERSECTION OBSERVER STAGGERED WAVE REVEAL ANIMATIONS
+   - Tự động hiện khi cuộn tới vùng nhìn với hiệu ứng lượn sóng so le (Stagger Wave)
+   - Tự động phân bổ --stagger-idx cho các phần tử con trong .stagger-wave
    - Cuộn xuống: Nội dung bên trên lướt lên và mờ dần biến mất (.exit-above)
    - Cuộn lên: Nội dung bên dưới lướt xuống và mờ dần biến mất (.exit-below)
-   - Tốc độ reveal chậm rãi, mượt mà (1.35s - 1.4s), chuẩn điện ảnh
+   - Tốc độ reveal: 0.82s mượt mà, tụ nét và vươn lên
    ========================================================================== */
 function initRevealAnimations() {
+    // Tự động phân bổ chỉ số lượn sóng (--stagger-idx) cho các phần tử trong .stagger-wave
+    document.querySelectorAll('.stagger-wave').forEach(container => {
+        const items = container.querySelectorAll(':scope > .reveal, :scope > .reveal-scale, :scope > * > .reveal, :scope > * > .reveal-scale');
+        items.forEach((item, index) => {
+            if (!item.style.getPropertyValue('--stagger-idx')) {
+                item.style.setProperty('--stagger-idx', index);
+            }
+        });
+    });
+
     const reveals = document.querySelectorAll('.reveal, .reveal-scale');
     if (!reveals.length) return;
 

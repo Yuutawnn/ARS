@@ -544,51 +544,62 @@ h1.glow-text span {
 }
 
 /* ==========================================================================
-   SMOOTH BIDIRECTIONAL REVEAL ANIMATIONS (GPU-ACCELERATED)
-   - Tốc độ reveal chậm rãi, mượt mà (1.35s duration với cubic-bezier cinematic)
-   - Scroll xuống: nội dung bên trên lướt lên và mờ biến mất (.exit-above)
-   - Scroll lên: nội dung bên dưới lướt xuống và mờ biến mất (.exit-below)
-   - Scroll đến đâu: nội dung trong viewport hiện mượt mà (.revealed)
+   STAGGERED WAVE REVEAL ANIMATIONS (CINEMATIC & GPU-ACCELERATED)
+   - Tốc độ reveal: 0.82s mượt mà, gia tốc cubic-bezier(0.16, 1, 0.3, 1)
+   - Tụ nét & vươn lên: translateY(30px) + scale(0.97) + blur(6px) -> translateY(0) + scale(1) + blur(0)
+   - Stagger Wave: Các thẻ/phần tử con trồi lên lần lượt nối đuôi nhau theo nhịp (--stagger-idx * 90ms)
+   - 2 chiều mượt mà: cuộn xuống (.exit-above) và cuộn lên (.exit-below) biến mất nhanh tức thì (0.5s)
    ========================================================================== */
 .reveal {
     opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 1.35s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
+    transform: translateY(30px) scale(0.98);
+    filter: blur(6px);
+    transition: opacity 0.82s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.82s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.82s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform, filter;
 }
 
 .reveal-scale {
     opacity: 0;
-    transform: translateY(28px) scale(0.96);
-    transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
+    transform: translateY(26px) scale(0.94);
+    filter: blur(6px);
+    transition: opacity 0.88s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.88s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.88s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform, filter;
 }
 
-/* 1. Trạng Thái Hiện (In-View Active State) */
+/* 1. Trạng Thái Xuất Hiện (In-View Active State - Áp Dụng Độ Trễ Stagger Wave) */
 .reveal.revealed,
 .reveal-scale.revealed {
     opacity: 1 !important;
     transform: translateY(0) scale(1) !important;
-    transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 1.35s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: blur(0) !important;
+    transition: opacity 0.82s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.82s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.82s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--stagger-idx, 0) * 90ms);
 }
 
 /* 2. Trạng Thái Scroll Xuống -> Nội Dung Trên Biến Mất (.exit-above) */
 .reveal.exit-above {
     opacity: 0 !important;
-    transform: translateY(-32px) !important;
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(-28px) scale(0.98) !important;
+    filter: blur(4px) !important;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     transition-delay: 0s !important;
 }
 
 .reveal-scale.exit-above {
     opacity: 0 !important;
-    transform: translateY(-28px) scale(0.96) !important;
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(-24px) scale(0.95) !important;
+    filter: blur(4px) !important;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     transition-delay: 0s !important;
 }
 
@@ -596,30 +607,46 @@ h1.glow-text span {
 .reveal.exit-below,
 .reveal:not(.revealed):not(.exit-above) {
     opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(30px) scale(0.98);
+    filter: blur(6px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     transition-delay: 0s !important;
 }
 
 .reveal-scale.exit-below,
 .reveal-scale:not(.revealed):not(.exit-above) {
     opacity: 0;
-    transform: translateY(28px) scale(0.96);
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(26px) scale(0.94);
+    filter: blur(6px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     transition-delay: 0s !important;
 }
 
-/* Stagger Delays chỉ áp dụng khi bắt đầu xuất hiện (.revealed) */
-.reveal.revealed.delay-100, .reveal-scale.revealed.delay-100 { transition-delay: 100ms; }
-.reveal.revealed.delay-150, .reveal-scale.revealed.delay-150 { transition-delay: 140ms; }
+/* Tự Động Định Tuyến Stagger Wave Nối Tiếp Cho Container .stagger-wave */
+.stagger-wave > *:nth-child(1) { --stagger-idx: 0; }
+.stagger-wave > *:nth-child(2) { --stagger-idx: 1; }
+.stagger-wave > *:nth-child(3) { --stagger-idx: 2; }
+.stagger-wave > *:nth-child(4) { --stagger-idx: 3; }
+.stagger-wave > *:nth-child(5) { --stagger-idx: 4; }
+.stagger-wave > *:nth-child(6) { --stagger-idx: 5; }
+.stagger-wave > *:nth-child(7) { --stagger-idx: 6; }
+.stagger-wave > *:nth-child(8) { --stagger-idx: 7; }
+.stagger-wave > *:nth-child(9) { --stagger-idx: 8; }
+.stagger-wave > *:nth-child(10) { --stagger-idx: 9; }
+
+/* Tương Thích Ngược Với Các Lớp Độ Trễ Thủ Công */
+.reveal.revealed.delay-100, .reveal-scale.revealed.delay-100 { transition-delay: 90ms; }
+.reveal.revealed.delay-150, .reveal-scale.revealed.delay-150 { transition-delay: 135ms; }
 .reveal.revealed.delay-200, .reveal-scale.revealed.delay-200 { transition-delay: 180ms; }
-.reveal.revealed.delay-250, .reveal-scale.revealed.delay-250 { transition-delay: 220ms; }
-.reveal.revealed.delay-300, .reveal-scale.revealed.delay-300 { transition-delay: 260ms; }
-.reveal.revealed.delay-400, .reveal-scale.revealed.delay-400 { transition-delay: 320ms; }
-.reveal.revealed.delay-500, .reveal-scale.revealed.delay-500 { transition-delay: 400ms; }
-.reveal.revealed.delay-600, .reveal-scale.revealed.delay-600 { transition-delay: 480ms; }
+.reveal.revealed.delay-250, .reveal-scale.revealed.delay-250 { transition-delay: 225ms; }
+.reveal.revealed.delay-300, .reveal-scale.revealed.delay-300 { transition-delay: 270ms; }
+.reveal.revealed.delay-400, .reveal-scale.revealed.delay-400 { transition-delay: 360ms; }
+.reveal.revealed.delay-500, .reveal-scale.revealed.delay-500 { transition-delay: 450ms; }
+.reveal.revealed.delay-600, .reveal-scale.revealed.delay-600 { transition-delay: 540ms; }
 
 /* Tắt độ trễ khi biến mất để chuyển cảnh tức thì và mượt mà */
 .reveal:not(.revealed),
@@ -637,6 +664,7 @@ h1.glow-text span {
     .reveal-scale.exit-below {
         opacity: 1 !important;
         transform: none !important;
+        filter: none !important;
         transition: none !important;
     }
 }

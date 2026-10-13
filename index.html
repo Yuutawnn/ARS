@@ -84,9 +84,9 @@
         <div class="my-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center w-full">
             
             <!-- CỘT TRÁI (THÔNG TIN GỌN GÀNG, COHESIVE, REVEAL CASCADING) -->
-            <div class="lg:col-span-7 flex flex-col space-y-4 sm:space-y-5 lg:space-y-5">
+            <div class="lg:col-span-7 flex flex-col space-y-4 sm:space-y-5 lg:space-y-5 stagger-wave">
                 <!-- Avatar & Tiêu Đề Chính Căn Ngang Đồng Đều Cân Xứng -->
-                <div class="flex items-center gap-4 sm:gap-6 md:gap-7 reveal delay-100">
+                <div class="flex items-center gap-4 sm:gap-6 md:gap-7 reveal">
                     <div class="border-glow-card w-24 h-24 xs:w-28 xs:h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 xl:w-48 xl:h-48 rounded-2xl sm:rounded-3xl shadow-2xl shadow-[#0474C4]/30 flex-shrink-0 animate-float group cursor-pointer" style="--border-radius: 24px; --glow-padding: 30px; --edge-sensitivity: 15;">
                         <span class="edge-light"></span>
                         <div class="border-glow-inner w-full h-full rounded-[14px] sm:rounded-[22px] overflow-hidden">
@@ -263,7 +263,7 @@
         </div>
 
         <!-- Dynamic Partners Grid (Rendered from data.js & synced live with Discord API) -->
-        <div id="partners-list" class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+        <div id="partners-list" class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 stagger-wave">
             <!-- Render từ data.js -->
         </div>
     </section>
@@ -273,7 +273,7 @@
        Các dòng câu hỏi phân tách bằng đường kẻ thanh mảnh, không đóng khung
        ========================================================================== -->
     <section id="faqs" class="py-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto z-10 relative">
-        <div class="text-center mb-12 reveal delay-100">
+        <div class="text-center mb-12 reveal">
             <span class="text-xs font-mono uppercase tracking-widest text-[#5379AE] font-semibold block mb-2">CÂU HỎI THƯỜNG GẶP</span>
             <h2 class="text-2xl sm:text-4xl font-bold font-heading text-white uppercase tracking-tight">
                 GIẢI ĐÁP THẮC MẮC (FAQ)
@@ -282,10 +282,10 @@
         </div>
 
         <!-- Clean seamless accordion trong Border Glow Card -->
-        <div class="border-glow-card rounded-3xl bg-black/60 shadow-xl shadow-[#0474C4]/5 reveal delay-200" style="--border-radius: 24px;">
+        <div class="border-glow-card rounded-3xl bg-black/60 shadow-xl shadow-[#0474C4]/5 reveal" style="--border-radius: 24px;">
             <span class="edge-light"></span>
             <div class="border-glow-inner p-5 sm:p-8">
-                <div id="faq-accordion-container" class="divide-y divide-[#5379AE]/20">
+                <div id="faq-accordion-container" class="divide-y divide-[#5379AE]/20 stagger-wave">
                     <!-- Render từ data.js -->
                 </div>
             </div>
@@ -296,7 +296,7 @@
        FOOTER SECTION (DEEP DARK MINIMALIST GLASS FOOTER)
        ========================================================================== -->
     <footer class="border-t border-[#5379AE]/20 bg-black py-14 px-4 sm:px-6 lg:px-8 z-10 relative">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left stagger-wave">
             <!-- Info & Logo -->
             <div class="flex flex-col items-center md:items-start gap-2.5 reveal delay-100">
                 <div class="flex items-center gap-3">
