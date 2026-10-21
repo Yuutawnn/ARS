@@ -14,6 +14,7 @@ const ClanData = {
         region: "Việt Nam",
         discordInvite: "https://discord.gg/arsontop",
         avatar: "assets/images/avatar.webp",
+        logo: "assets/images/arsex.png",
         banner: "assets/images/banner.jpg",
         fandomUrl: "https://typemoon.fandom.com/vi/wiki/Ars_Paulina",
         achievements: ["Former #1 VN", "Former #3 Asia"],
